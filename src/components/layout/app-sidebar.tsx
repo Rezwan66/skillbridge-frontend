@@ -1,10 +1,9 @@
 import * as React from 'react';
 
-import { SearchForm } from '@/components/layout/search-form';
-import { VersionSwitcher } from '@/components/layout/version-switcher';
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -23,15 +22,18 @@ import { adminRoutes } from '@/routes/adminRoutes';
 import { tutorRoutes } from '@/routes/tutorRoutes';
 import { studentRoutes } from '@/routes/studentRoutes';
 import Link from 'next/link';
-import { Separator } from '../ui/separator';
+
+import ProfileCard from '../modules/shared/ProfileCard';
+import { UserInfo } from '@/types/user.types';
 
 export function AppSidebar({
   user,
   ...props
 }: {
-  user: { role: string } & React.ComponentProps<typeof Sidebar>;
+  user: UserInfo & React.ComponentProps<typeof Sidebar>;
 }) {
   let routes: Route[] = [];
+  // console.log('sidebar', user);
 
   switch (user.role) {
     case Roles.admin:
@@ -50,19 +52,20 @@ export function AppSidebar({
 
   return (
     <Sidebar {...props}>
-      <SidebarHeader>
+      <div className="p-4">
+        <Logo />
+      </div>
+      <SidebarHeader className="mx-auto hidden lg:block ">
         {/* <VersionSwitcher
           versions={data.versions}
           defaultVersion={data.versions[0]}
         /> */}
         {/* Logo */}
-        <Logo />
         {/* <SearchForm /> */}
-        <div className="mx-auto mt-2 py-4">
-          <Calendar01 />
-        </div>
+
+        <Calendar01 />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="">
         {/* We create a SidebarGroup for each parent. */}
         <div>
           {/* <Separator /> */}
@@ -84,6 +87,9 @@ export function AppSidebar({
           ))}
         </div>
       </SidebarContent>
+      <SidebarFooter>
+        <ProfileCard user={user} />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );

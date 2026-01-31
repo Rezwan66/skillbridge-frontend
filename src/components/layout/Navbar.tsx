@@ -29,6 +29,8 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { ModeToggle } from './ModeToggle';
+import { UserInfo } from '@/types/user.types';
+import { UserMenu } from '../modules/shared/NavUserMenu';
 
 interface MenuItem {
   title: string;
@@ -58,6 +60,7 @@ interface Navbar1Props {
       url: string;
     };
   };
+  user?: UserInfo;
 }
 
 const Navbar = ({
@@ -85,17 +88,20 @@ const Navbar = ({
       title: 'Contact',
       url: '/contact',
     },
-    {
-      title: 'Dashboard',
-      url: '/dashboard',
-    },
   ],
   auth = {
     login: { title: 'Login', url: '/login' },
     signup: { title: 'Sign up', url: '/register' },
   },
   className,
+  user,
 }: Navbar1Props) => {
+  if (user) {
+    menu.push({
+      title: 'Dashboard',
+      url: '/dashboard',
+    });
+  }
   return (
     <section className={cn('py-4', className)}>
       <div className="container mx-auto px-4">
@@ -123,15 +129,28 @@ const Navbar = ({
               </NavigationMenu>
             </div>
           </div>
-          <div className="flex gap-2">
-            <ModeToggle />
-            <Button asChild variant="outline" size="sm">
-              <Link href={auth.login.url}>{auth.login.title}</Link>
-            </Button>
-            <Button asChild size="sm">
-              <Link href={auth.signup.url}>{auth.signup.title}</Link>
-            </Button>
-          </div>
+          {user ? (
+            <div className="flex items-center gap-3">
+              <ModeToggle />
+              <UserMenu
+                user={{
+                  name: user.name,
+                  email: user.email,
+                  image: user.image,
+                }}
+              />
+            </div>
+          ) : (
+            <div className="flex gap-3">
+              <ModeToggle />
+              <Button asChild variant="outline" size="sm">
+                <Link href={auth.login.url}>{auth.login.title}</Link>
+              </Button>
+              <Button asChild size="sm">
+                <Link href={auth.signup.url}>{auth.signup.title}</Link>
+              </Button>
+            </div>
+          )}
         </nav>
 
         {/* Mobile Menu */}
@@ -176,14 +195,27 @@ const Navbar = ({
                     {menu.map(item => renderMobileMenuItem(item))}
                   </Accordion>
 
-                  <div className="flex flex-col gap-3">
-                    <Button asChild variant="outline">
-                      <Link href={auth.login.url}>{auth.login.title}</Link>
-                    </Button>
-                    <Button asChild>
-                      <Link href={auth.signup.url}>{auth.signup.title}</Link>
-                    </Button>
-                  </div>
+                  {user ? (
+                    <div className="flex items-center gap-3 justify-center">
+                      <ModeToggle />
+                      <UserMenu
+                        user={{
+                          name: user.name,
+                          email: user.email,
+                          image: user.image,
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-3">
+                      <Button asChild variant="outline">
+                        <Link href={auth.login.url}>{auth.login.title}</Link>
+                      </Button>
+                      <Button asChild>
+                        <Link href={auth.signup.url}>{auth.signup.title}</Link>
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </SheetContent>
             </Sheet>

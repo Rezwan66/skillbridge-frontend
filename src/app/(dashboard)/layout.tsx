@@ -28,10 +28,11 @@ export default async function DashboardLayout({
   const { data } = await userService.getSession();
 
   const userInfo = { role: data?.user?.role };
+  // console.log('layout', data.user);
 
   return (
     <SidebarProvider>
-      <AppSidebar user={userInfo} />
+      <AppSidebar user={data?.user} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
