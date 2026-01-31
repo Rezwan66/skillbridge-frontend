@@ -17,7 +17,7 @@ import { toast } from 'sonner';
 import * as z from 'zod';
 import { env } from '@/env';
 import Link from 'next/link';
-import { Roles } from '@/constants/roles';
+import { Roles } from '@/constants';
 import {
   Select,
   SelectContent,
@@ -25,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const formSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -33,12 +34,15 @@ const formSchema = z.object({
   role: z.enum([Roles.student, Roles.tutor]),
 });
 
-const FRONTEND_URL = env.NEXT_PUBLIC_FRONTEND;
+// const FRONTEND_URL = env.NEXT_PUBLIC_FRONTEND;
 
 export function RegisterForm({
   className,
   ...props
 }: React.ComponentProps<'form'>) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get('redirectPath');
   const form = useForm({
     defaultValues: {
       name: '',
@@ -57,12 +61,18 @@ export function RegisterForm({
           toast.error(error.message, { id: toastSlug });
           return;
         }
-        if (data.user) {
+        if (data?.user) {
           toast.success('User Account Created Successfully', { id: toastSlug });
+          console.log(data);
+          form.reset();
+          toast.success('Please Login', { id: toastSlug });
+
+          if (redirectPath) {
+            router.push(`/login?callbackUrl=${redirectPath}`);
+          } else {
+            router.push('/login');
+          }
         }
-        console.log(data);
-        //! must navigate to login, since we are not auto logged in
-        form.reset();
       } catch (error) {
         toast.error('Something went wrong, please try again.', {
           id: toastSlug,

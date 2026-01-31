@@ -16,18 +16,25 @@ import { toast } from 'sonner';
 import * as z from 'zod';
 import { env } from '@/env';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const formSchema = z.object({
   email: z.email(),
   password: z.string().min(8, 'Minimum length is 8'),
 });
 
-const FRONTEND_URL = env.NEXT_PUBLIC_FRONTEND;
+// const FRONTEND_URL = env.NEXT_PUBLIC_FRONTEND;
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<'form'>) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  console.log({ searchParams });
+  const redirectPath = searchParams.get('redirectPath') || '/';
+  console.log({ redirectPath });
+
   const form = useForm({
     defaultValues: {
       email: '',
@@ -44,12 +51,14 @@ export function LoginForm({
           return;
         }
 
-        if (data.token) {
+        if (data?.token) {
           toast.success('User Logged In Successfully', { id: toastSlug });
-          //vavigate to home or sth
+          // console.log(data);
+          form.reset();
+          //navigate to home or origin
+
+          router.replace(redirectPath);
         }
-        console.log(data);
-        form.reset();
       } catch (error) {
         toast.error('Something went wrong, please try again.', {
           id: toastSlug,

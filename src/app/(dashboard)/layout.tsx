@@ -13,9 +13,10 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { Roles } from '@/constants/roles';
+import { Roles } from '@/constants';
+import { userService } from '@/services/user.service';
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   admin,
   student,
   tutor,
@@ -24,7 +25,9 @@ export default function DashboardLayout({
   student: React.ReactNode;
   tutor: React.ReactNode;
 }) {
-  const userInfo = { role: 'STUDENT' };
+  const { data } = await userService.getSession();
+
+  const userInfo = { role: data?.user?.role };
 
   return (
     <SidebarProvider>

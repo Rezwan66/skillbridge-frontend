@@ -5,5 +5,5 @@ const BACKEND_URL = env.NEXT_PUBLIC_BACKEND;
 
 export const authClient = createAuthClient({
   /** The base URL of the server (optional if you're using the same domain) */
-  baseURL: `https://skillbridge-backend-phi.vercel.app`,
+  baseURL: `${BACKEND_URL}`,
 });

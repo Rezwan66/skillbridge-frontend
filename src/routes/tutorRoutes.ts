@@ -5,8 +5,8 @@ export const tutorRoutes: Route[] = [
     title: 'Tutor Home',
     items: [
       {
-        title: 'Create Blog',
-        url: '/dashboard/create-blog',
+        title: 'Profile',
+        url: '/dashboard/profile',
       },
       {
         title: 'History',

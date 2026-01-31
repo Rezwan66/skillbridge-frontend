@@ -18,7 +18,7 @@ import Calendar01 from './calendar-01';
 
 import Logo from '../modules/shared/Logo';
 import { Route } from '@/types/routes.type';
-import { Roles } from '@/constants/roles';
+import { Roles } from '@/constants';
 import { adminRoutes } from '@/routes/adminRoutes';
 import { tutorRoutes } from '@/routes/tutorRoutes';
 import { studentRoutes } from '@/routes/studentRoutes';
