@@ -5,9 +5,9 @@ import Image from 'next/image';
 import Logo from '@/components/modules/shared/Logo';
 import { authClient } from '@/lib/auth-client';
 
-export default async function LoginPage() {
-  const session = await authClient.getSession();
-  console.log(session);
+export default function LoginPage() {
+  // const session = await authClient.getSession();
+  // console.log(session);
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">

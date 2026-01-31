@@ -1,9 +1,9 @@
 import { env } from '@/env';
 import { createAuthClient } from 'better-auth/react';
 
-const BACKEND_URL = env.BACKEND_URL;
+const BACKEND_URL = env.NEXT_PUBLIC_BACKEND;
 
 export const authClient = createAuthClient({
   /** The base URL of the server (optional if you're using the same domain) */
-  baseURL: `${BACKEND_URL}`,
+  baseURL: `https://skillbridge-backend-phi.vercel.app`,
 });
