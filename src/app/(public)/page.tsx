@@ -1,3 +1,4 @@
+import { HomeHero } from '@/components/modules/home/HomeHero';
 import { userService } from '@/services/user.service';
 import { cookies } from 'next/headers';
 
@@ -7,7 +8,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <h2>HomePage page</h2>
+      <HomeHero />
     </div>
   );
 }
