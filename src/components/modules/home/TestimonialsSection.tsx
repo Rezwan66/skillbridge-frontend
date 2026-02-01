@@ -1,4 +1,3 @@
-// src/components/home/TestimonialsSection.tsx
 'use client';
 
 import {
@@ -9,11 +8,12 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 
-import { testimonials } from '@/data/testimonials';
+// import { testimonials } from '@/data/testimonials';
 import { ReviewCard } from '../reviews/ReviewCard';
 import Autoplay from 'embla-carousel-autoplay';
+import { ReviewGet } from '@/types/review.type';
 
-export function TestimonialsSection() {
+export function TestimonialsSection({ reviews }: { reviews: ReviewGet[] }) {
   return (
     <section className="container py-16">
       {/* Heading */}
@@ -39,7 +39,7 @@ export function TestimonialsSection() {
         className="mx-auto max-w-5xl"
       >
         <CarouselContent>
-          {testimonials.map(review => (
+          {reviews.map(review => (
             <CarouselItem key={review.id} className="md:basis-1/2 lg:basis-1/3">
               <ReviewCard {...review} />
             </CarouselItem>

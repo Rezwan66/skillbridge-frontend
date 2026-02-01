@@ -37,4 +37,25 @@ export const reviewService = {
       return { data: null, error: { message: 'Something Went Wrong!' } };
     }
   },
+
+  getAllReviews: async function (options?: FetchOptions) {
+    try {
+      const url = new URL(`${API_URL}/api/reviews`);
+      const config: RequestInit = {};
+      if (options?.cache) {
+        config.cache = options.cache;
+      }
+      if (options?.revalidate) {
+        config.next = { revalidate: options.revalidate };
+      }
+      config.next = { ...config.next, tags: ['reviews'] };
+
+      const res = await fetch(url.toString(), config);
+      const data = await res.json();
+
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error: { message: 'Something Went Wrong' } };
+    }
+  },
 };

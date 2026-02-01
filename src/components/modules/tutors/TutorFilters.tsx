@@ -13,18 +13,24 @@ import {
 } from '@/components/ui/select';
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import { Category } from '@/types/category.type';
 
-const categories = [
-  { id: '1', name: 'Bengali' },
-  { id: '2', name: 'Biology' },
-  { id: '3', name: 'Chemistry' },
-  { id: '4', name: 'Deutsch' },
-  { id: '5', name: 'Geography' },
-  { id: '6', name: 'Mathematics' },
-  { id: '7', name: 'Physics' },
-];
+// const categories = [
+//   { id: '1', name: 'Bengali' },
+//   { id: '2', name: 'Biology' },
+//   { id: '3', name: 'Chemistry' },
+//   { id: '4', name: 'Deutsch' },
+//   { id: '5', name: 'Geography' },
+//   { id: '6', name: 'Mathematics' },
+//   { id: '7', name: 'Physics' },
+// ];
 
-export default function TutorFilters() {
+export default function TutorFilters({
+  categories,
+}: {
+  categories: Category[];
+}) {
+  // console.log(categories);
   const [price, setPrice] = useState(100);
   const [searchValue, setSearchValue] = useState('');
   const router = useRouter();
@@ -114,6 +120,9 @@ export default function TutorFilters() {
             <SelectValue placeholder="Select subject" />
           </SelectTrigger>
           <SelectContent>
+            <SelectItem disabled value="cat">
+              subject
+            </SelectItem>
             {categories.map(cat => (
               <SelectItem key={cat.id} value={cat.id}>
                 {cat.name}

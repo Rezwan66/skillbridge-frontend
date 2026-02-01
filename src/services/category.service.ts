@@ -7,7 +7,7 @@ const API_URL = env.API_URL;
 export const categoryService = {
   getAllCategories: async function (options?: FetchOptions) {
     try {
-      const url = new URL(`${API_URL}/api/tutors`);
+      const url = new URL(`${API_URL}/api/categories`);
       const config: RequestInit = {};
       if (options?.cache) {
         config.cache = options.cache;

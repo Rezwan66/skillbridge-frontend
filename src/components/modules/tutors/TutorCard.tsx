@@ -3,23 +3,16 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star } from 'lucide-react';
 import { TutorProfile } from '@/types/tutor.type';
+import { TUTOR_IMAGES } from '@/data/tutorImagePaths';
 
-const TUTOR_IMAGES = [
-  '/images/people-1.jpg',
-  '/images/people-2.jpg',
-  '/images/people-3.jpg',
-  '/images/people-4.jpg',
-  '/images/people-5.jpg',
-  '/images/people-6.jpg',
-  '/images/people-7.jpg',
-  '/images/people-8.jpg',
-  '/images/people-9.jpg',
-  '/images/people-10.jpg',
-  '/images/people-11.jpg',
-];
-
-export function TutorCard({ tutor }: { tutor: TutorProfile }) {
-  const tutorImage = TUTOR_IMAGES[parseInt(tutor.id) % TUTOR_IMAGES.length];
+export function TutorCard({
+  tutor,
+  idx,
+}: {
+  tutor: TutorProfile;
+  idx: number;
+}) {
+  const tutorImage = TUTOR_IMAGES[idx % TUTOR_IMAGES.length];
   return (
     <Card className="hover:shadow-lg transition ">
       <CardContent className="p-0 space-y-4">

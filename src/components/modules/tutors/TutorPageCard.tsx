@@ -1,43 +1,8 @@
 import { Card, CardContent } from '@/components/ui/card';
+import { TUTOR_IMAGES } from '@/data/tutorImagePaths';
 import { TutorProfile } from '@/types/tutor.type';
 import { Star } from 'lucide-react';
 import Image from 'next/image';
-
-const TUTOR_IMAGES = [
-  '/images/people-1.jpg',
-  '/images/people-2.jpg',
-  '/images/people-3.jpg',
-  '/images/people-4.jpg',
-  '/images/people-5.jpg',
-  '/images/people-6.jpg',
-  '/images/people-7.jpg',
-  '/images/people-8.jpg',
-  '/images/people-9.jpg',
-  '/images/people-10.jpg',
-  '/images/people-11.jpg',
-  '/images/people-1.jpg',
-  '/images/people-2.jpg',
-  '/images/people-3.jpg',
-  '/images/people-4.jpg',
-  '/images/people-5.jpg',
-  '/images/people-6.jpg',
-  '/images/people-7.jpg',
-  '/images/people-8.jpg',
-  '/images/people-9.jpg',
-  '/images/people-10.jpg',
-  '/images/people-11.jpg',
-  '/images/people-1.jpg',
-  '/images/people-2.jpg',
-  '/images/people-3.jpg',
-  '/images/people-4.jpg',
-  '/images/people-5.jpg',
-  '/images/people-6.jpg',
-  '/images/people-7.jpg',
-  '/images/people-8.jpg',
-  '/images/people-9.jpg',
-  '/images/people-10.jpg',
-  '/images/people-11.jpg',
-];
 
 export default function TutorPageCard({
   tutor,

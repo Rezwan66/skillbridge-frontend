@@ -15,6 +15,7 @@ export default function CategoriesMarquee({
 }: {
   categories: Category[];
 }) {
+  // console.log(categories);
   return (
     <section className="py-16 bg-muted/30 overflow-hidden">
       <div className="container mb-8 text-center">
@@ -32,7 +33,7 @@ export default function CategoriesMarquee({
           {[...categories, ...categories].map((category, index) => (
             <Link
               key={`${category.id}-${index}`}
-              href={`/tutors?category=${encodeURIComponent(category.name)}`}
+              href={`/tutors?categoryId=${encodeURIComponent(category.id)}`}
             >
               <CategoryCard category={category} />
             </Link>

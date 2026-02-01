@@ -1,11 +1,14 @@
 import { TutorProfile } from '@/types/tutor.type';
 import TutorFilters from './TutorFilters';
 import TutorsGrid from './TutorsGrid';
+import { Category } from '@/types/category.type';
 
 export default function TutorsPageLayout({
   tutors,
+  categories,
 }: {
   tutors: TutorProfile[];
+  categories: Category[];
 }) {
   console.log(tutors);
 
@@ -20,7 +23,7 @@ export default function TutorsPageLayout({
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-[260px_1fr]">
-        <TutorFilters />
+        <TutorFilters categories={categories} />
         <TutorsGrid tutors={tutors} />
       </div>
     </div>
