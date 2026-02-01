@@ -1,11 +1,30 @@
+import TutorsPageLayout from '@/components/modules/tutors/TutorsPageLayout';
 import { tutorService } from '@/services/tutor.service';
+import { TutorSearchParams } from '@/types/tutor.type';
 
-export default async function TutorsPage() {
-  const { data } = await tutorService.getAllTutors({}, { revalidate: 100 });
-  console.log(data);
+type PageProps = {
+  searchParams: TutorSearchParams;
+};
+
+export default async function TutorsPage({ searchParams }: PageProps) {
+  // const params = { ...(await searchParams) };
+  // const queries = await searchParams;
+  const resolvedParams = await searchParams;
+
+  const params = {
+    search: resolvedParams.search,
+    categoryId: resolvedParams.categoryId,
+    minRating: resolvedParams.minRating ? resolvedParams.minRating : undefined,
+    maxPrice: resolvedParams.maxPrice ? resolvedParams.maxPrice : undefined,
+  };
+  const { data } = await tutorService.getAllTutors(params, {
+    cache: 'no-store',
+  });
+  // console.log(data);
+
   return (
     <div>
-      <h2>Total Tutors: {data?.data?.length}</h2>
+      <TutorsPageLayout tutors={data?.data ?? []} />
     </div>
   );
 }

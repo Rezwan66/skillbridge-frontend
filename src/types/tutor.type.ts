@@ -15,9 +15,9 @@ export interface TutorProfile {
 }
 
 export interface TutorSearchParams {
-  search?: string | undefined;
-  categoryId?: string | undefined;
-  minRating?: number | undefined;
-  maxPrice?: number | undefined;
-  isFeatured?: boolean;
+  search?: string;
+  categoryId?: string;
+  minRating?: string;
+  maxPrice?: string;
+  isFeatured?: string;
 }

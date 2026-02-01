@@ -31,9 +31,9 @@ export function LoginForm({
 }: React.ComponentProps<'form'>) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  console.log({ searchParams });
+  // console.log({ searchParams });
   const redirectPath = searchParams.get('redirectPath') || '/';
-  console.log({ redirectPath });
+  // console.log({ redirectPath });
 
   const form = useForm({
     defaultValues: {

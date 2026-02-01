@@ -55,7 +55,7 @@ export function RegisterForm({
       const toastSlug = toast.loading('Creating User Account');
       try {
         const { data, error } = await authClient.signUp.email(value);
-        console.log(value);
+        // console.log(value);
 
         if (error) {
           toast.error(error.message, { id: toastSlug });
@@ -63,7 +63,7 @@ export function RegisterForm({
         }
         if (data?.user) {
           toast.success('User Account Created Successfully', { id: toastSlug });
-          console.log(data);
+          // console.log(data);
           form.reset();
           toast.success('Please Login', { id: toastSlug });
 
