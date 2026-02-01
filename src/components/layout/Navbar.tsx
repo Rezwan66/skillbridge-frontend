@@ -31,6 +31,7 @@ import Link from 'next/link';
 import { ModeToggle } from './ModeToggle';
 import { UserInfo } from '@/types/user.type';
 import { UserMenu } from '../modules/shared/NavUserMenu';
+import Logo from '../modules/shared/Logo';
 
 interface MenuItem {
   title: string;
@@ -68,7 +69,7 @@ const Navbar = ({
     url: 'https://www.shadcnblocks.com',
     src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg',
     alt: 'logo',
-    title: 'Shadcnblocks.com',
+    title: 'Skillbridge',
   },
   menu = [
     { title: 'Home', url: '/' },
@@ -109,7 +110,7 @@ const Navbar = ({
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <Link href={logo.url} className="flex items-center gap-2">
+            {/* <Link href={logo.url} className="flex items-center gap-2">
               <Image
                 src={logo.src}
                 width={32}
@@ -120,7 +121,8 @@ const Navbar = ({
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
-            </Link>
+            </Link> */}
+            <Logo />
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>

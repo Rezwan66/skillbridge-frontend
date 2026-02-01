@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 
-import { Logo, LogoImage, LogoText } from '@/components/ui/logo';
+import { LogoImage, LogoText } from '@/components/ui/logo';
+import Logo from '../modules/shared/Logo';
 
 interface MenuItem {
   title: string;
@@ -35,10 +36,10 @@ const Footer = ({
     url: 'https://www.shadcnblocks.com',
   },
   className,
-  tagline = 'Components made easy.',
+  tagline = 'Connect with expert tutors',
   menuItems = [
     {
-      title: 'Product',
+      title: 'Tutors',
       links: [
         { text: 'Overview', url: '#' },
         { text: 'Pricing', url: '#' },
@@ -49,7 +50,7 @@ const Footer = ({
       ],
     },
     {
-      title: 'Company',
+      title: 'Subjects',
       links: [
         { text: 'About', url: '#' },
         { text: 'Team', url: '#' },
@@ -60,7 +61,7 @@ const Footer = ({
       ],
     },
     {
-      title: 'Resources',
+      title: 'About Us',
       links: [
         { text: 'Help', url: '#' },
         { text: 'Sales', url: '#' },
@@ -76,7 +77,7 @@ const Footer = ({
       ],
     },
   ],
-  copyright = '© 2024 Shadcnblocks.com. All rights reserved.',
+  copyright = '© 2026 Made with ❤️ using Next.Js & Shadcnblocks.com. All rights reserved.',
   bottomLinks = [
     { text: 'Terms and Conditions', url: '#' },
     { text: 'Privacy Policy', url: '#' },
@@ -89,7 +90,7 @@ const Footer = ({
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
               <div className="flex items-center gap-2 lg:justify-start">
-                <Logo url="https://shadcnblocks.com">
+                {/* <Logo url="https://shadcnblocks.com">
                   <LogoImage
                     src={logo.src}
                     alt={logo.alt}
@@ -97,7 +98,8 @@ const Footer = ({
                     className="h-10 dark:invert"
                   />
                   <LogoText className="text-xl">{logo.title}</LogoText>
-                </Logo>
+                </Logo> */}
+                <Logo />
               </div>
               <p className="mt-4 font-bold">{tagline}</p>
             </div>

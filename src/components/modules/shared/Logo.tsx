@@ -2,10 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const logo = {
-  url: 'https://www.shadcnblocks.com',
-  src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg',
+  url: '/',
+  src: '/logo/mortarboard-large.png',
   alt: 'logo',
-  title: 'Shadcnblocks.com',
+  title: 'Skillbridge',
+  subtitle: 'Never Stop Learning',
 };
 
 export default function Logo() {
@@ -18,9 +19,12 @@ export default function Logo() {
         className="max-h-8 dark:invert"
         alt={logo.alt}
       />
-      <span className="text-lg font-semibold tracking-tighter">
-        {logo.title}
-      </span>
+      <div className="flex flex-col justify-start">
+        <span className="text-lg font-semibold tracking-tighter">
+          {logo.title}
+        </span>
+        <span className="text-[8.5px]">{logo.subtitle}</span>
+      </div>
     </Link>
   );
 }
