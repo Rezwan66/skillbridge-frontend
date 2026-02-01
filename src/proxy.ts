@@ -24,6 +24,10 @@ export async function proxy(request: NextRequest) {
     );
   }
 
+  if (isAuthenticated && AUTH_ROUTES.includes(pathname)) {
+    return NextResponse.redirect(new URL('/', origin));
+  }
+
   const userRole = data?.user?.role as Role;
 
   // if (!ALLOWED_ROLES.includes(userRole)) {
@@ -45,5 +49,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard', '/dashboard/:path*'],
+  matcher: ['/dashboard', '/dashboard/:path*', '/login', '/register'],
 };

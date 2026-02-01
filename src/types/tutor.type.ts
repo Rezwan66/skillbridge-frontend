@@ -13,3 +13,11 @@ export interface TutorProfile {
     };
   }[];
 }
+
+export interface TutorSearchParams {
+  search?: string | undefined;
+  categoryId?: string | undefined;
+  minRating?: number | undefined;
+  maxPrice?: number | undefined;
+  isFeatured?: boolean;
+}

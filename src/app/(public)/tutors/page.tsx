@@ -1,7 +1,14 @@
-export default function TutorsPage() {
+import { tutorService } from '@/services/tutor.service';
+
+export default async function TutorsPage() {
+  const { data } = await tutorService.getAllTutors(
+    { isFeatured: true },
+    { revalidate: 100 },
+  );
+  console.log(data);
   return (
     <div>
-      <h2>TutorsPage this is the tutors page</h2>
+      <h2>Total Tutors: {data?.data?.length}</h2>
     </div>
   );
 }

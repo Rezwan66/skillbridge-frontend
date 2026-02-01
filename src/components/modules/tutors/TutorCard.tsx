@@ -21,7 +21,7 @@ const TUTOR_IMAGES = [
 export function TutorCard({ tutor }: { tutor: TutorProfile }) {
   const tutorImage = TUTOR_IMAGES[parseInt(tutor.id) % TUTOR_IMAGES.length];
   return (
-    <Card className="hover:shadow-lg transition">
+    <Card className="hover:shadow-lg transition ">
       <CardContent className="p-0 space-y-4">
         {/* Image */}
         <div className="relative h-48 w-full rounded-t-md overflow-hidden">
