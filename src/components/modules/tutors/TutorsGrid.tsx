@@ -3,7 +3,9 @@ import TutorPageCard from './TutorPageCard';
 
 export default function TutorsGrid({ tutors }: { tutors: TutorProfile[] }) {
   if (!tutors.length) {
-    return <p className="text-muted-foreground">No tutors found.</p>;
+    return (
+      <p className="text-muted-foreground text-center">No tutors found.</p>
+    );
   }
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

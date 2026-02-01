@@ -48,7 +48,7 @@ export default function TutorPageCard({
 }) {
   const tutorImage = TUTOR_IMAGES[idx % TUTOR_IMAGES.length];
   return (
-    <Card className="hover:shadow-md transition">
+    <Card className="hover:shadow-md cursor-pointer transition h-56">
       <CardContent className="p-4 space-y-4">
         <div className="flex items-center gap-3">
           <Image
@@ -59,7 +59,7 @@ export default function TutorPageCard({
             className="rounded-full"
           />
           <div>
-            <p className="font-medium">Tutor</p>
+            <p className="font-medium">{tutor?.name ?? 'Tutor'}</p>
             <p className="text-xs text-muted-foreground">
               {tutor.experienceYears} years experience
             </p>

@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useState } from 'react';
+import { X } from 'lucide-react';
 
 const categories = [
   { id: '1', name: 'Bengali' },
@@ -24,11 +25,13 @@ const categories = [
 ];
 
 export default function TutorFilters() {
-  const [price, setPrice] = useState(50);
+  const [price, setPrice] = useState(100);
   const [searchValue, setSearchValue] = useState('');
   const router = useRouter();
   const params = useSearchParams();
 
+  const hasActiveFilters = params.toString().length > 0;
+  // set query function
   const updateParam = (key: string, value: string) => {
     const newParams = new URLSearchParams(params.toString());
     if (!value) {
@@ -38,10 +41,28 @@ export default function TutorFilters() {
     }
     router.push(`/tutors?${newParams.toString()}`);
   };
+  // clear filters
+  const clearFilters = () => {
+    setPrice(50);
+    router.push('/tutors');
+  };
 
   return (
     <aside className="space-y-8">
-      <h3 className="font-semibold">Filters</h3>
+      <div className="flex items-center justify-between">
+        <h3 className="font-semibold">Filters</h3>
+        {hasActiveFilters && (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={clearFilters}
+            className="h-8 px-2 text-xs"
+          >
+            <X className="mr-1 h-3 w-3" />
+            Clear
+          </Button>
+        )}
+      </div>
       {/* searchbar */}
       <Input
         placeholder="Search tutors..."
@@ -90,7 +111,7 @@ export default function TutorFilters() {
         <p className="mb-2 text-sm font-medium">By Subject</p>
         <Select onValueChange={value => updateParam('categoryId', value)}>
           <SelectTrigger>
-            <SelectValue placeholder="Subject" />
+            <SelectValue placeholder="Select subject" />
           </SelectTrigger>
           <SelectContent>
             {categories.map(cat => (

@@ -2,6 +2,7 @@ import { env } from '@/env';
 import { cookies } from 'next/headers';
 
 const AUTH_URL = env.AUTH_URL;
+const API_URL = env.API_URL;
 
 export const userService = {
   getSession: async function () {
@@ -22,6 +23,35 @@ export const userService = {
       return { data: session, error: null };
     } catch (error) {
       console.error(error);
+      return { data: null, error: { message: 'Something Went Wrong!' } };
+    }
+  },
+
+  updateMyProfile: async function (payload: { name: string; image: string }) {
+    try {
+      const cookieStore = await cookies();
+      const res = await fetch(`${API_URL}/api/users/me`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: cookieStore.toString(),
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        return {
+          data: null,
+          error: {
+            message: 'Error: profile not updated',
+          },
+        };
+      }
+
+      return { data, error: null };
+    } catch (error) {
       return { data: null, error: { message: 'Something Went Wrong!' } };
     }
   },

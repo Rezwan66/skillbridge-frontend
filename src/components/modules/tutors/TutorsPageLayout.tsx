@@ -10,7 +10,7 @@ export default function TutorsPageLayout({
   console.log(tutors);
 
   return (
-    <div className="container py-10">
+    <div className="container py-10 min-h-screen">
       <div className="mb-6">
         <h1 className="text-3xl font-bold">Find Your Tutor</h1>
         <p className="text-muted-foreground">

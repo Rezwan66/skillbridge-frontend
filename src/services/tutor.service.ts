@@ -1,6 +1,7 @@
 import { env } from '@/env';
 import { FetchOptions } from '@/types/data-fetch.type';
-import { TutorSearchParams } from '@/types/tutor.type';
+import { TutorCreateProfile, TutorSearchParams } from '@/types/tutor.type';
+import { cookies } from 'next/headers';
 
 const API_URL = env.API_URL;
 
@@ -35,6 +36,144 @@ export const tutorService = {
       return { data, error: null };
     } catch (error) {
       return { data: null, error: { message: 'Something Went Wrong' } };
+    }
+  },
+
+  getTutorById: async function (id: string) {
+    try {
+      const res = await fetch(`${API_URL}/api/tutors/${id}`);
+      const data = await res.json();
+
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error: { message: 'Something Went Wrong!' } };
+    }
+  },
+
+  createTutorProfile: async function (
+    tutorCreateProfileData: TutorCreateProfile,
+  ) {
+    try {
+      const cookieStore = await cookies();
+      const res = await fetch(`${API_URL}/api/tutors/profile`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: cookieStore.toString(),
+        },
+        body: JSON.stringify(tutorCreateProfileData),
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        return {
+          data: null,
+          error: {
+            message: 'Error: Profile not created/updated',
+          },
+        };
+      }
+
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error: { message: 'Something Went Wrong!' } };
+    }
+  },
+
+  createTutorAvailability: async function (payload: {
+    startTime: Date;
+    endTime: Date;
+  }) {
+    try {
+      const cookieStore = await cookies();
+      const res = await fetch(`${API_URL}/api/tutors/availability`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: cookieStore.toString(),
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        return {
+          data: null,
+          error: {
+            message: 'Error: Availability not created',
+          },
+        };
+      }
+
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error: { message: 'Something Went Wrong!' } };
+    }
+  },
+
+  updateTutorAvailability: async function (
+    id: string,
+    payload: {
+      startTime: Date;
+      endTime: Date;
+    },
+  ) {
+    try {
+      const cookieStore = await cookies();
+      const res = await fetch(`${API_URL}/api/tutors/availability/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: cookieStore.toString(),
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        return {
+          data: null,
+          error: {
+            message: 'Error: Availability not updated',
+          },
+        };
+      }
+
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error: { message: 'Something Went Wrong!' } };
+    }
+  },
+
+  updateTutorCategory: async function (payload: { categoryIds: string[] }) {
+    try {
+      const cookieStore = await cookies();
+      const res = await fetch(`${API_URL}/api/tutors/categories`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: cookieStore.toString(),
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        return {
+          data: null,
+          error: {
+            message: 'Error: Categories not added',
+          },
+        };
+      }
+
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error: { message: 'Something Went Wrong!' } };
     }
   },
 };
