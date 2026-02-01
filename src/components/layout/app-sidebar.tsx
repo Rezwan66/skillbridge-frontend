@@ -24,7 +24,7 @@ import { studentRoutes } from '@/routes/studentRoutes';
 import Link from 'next/link';
 
 import ProfileCard from '../modules/shared/ProfileCard';
-import { UserInfo } from '@/types/user.types';
+import { UserInfo } from '@/types/user.type';
 
 export function AppSidebar({
   user,
