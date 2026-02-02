@@ -55,7 +55,7 @@ export function AppSidebar({
       <div className="p-4">
         <Logo />
       </div>
-      <SidebarHeader className="mx-auto hidden lg:block ">
+      <SidebarHeader className="mx-auto hidden lg:block">
         {/* <VersionSwitcher
           versions={data.versions}
           defaultVersion={data.versions[0]}

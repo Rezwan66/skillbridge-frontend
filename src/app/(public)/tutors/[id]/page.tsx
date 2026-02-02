@@ -3,6 +3,7 @@ import { Separator } from '@/components/ui/separator';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 import { tutorService } from '@/services/tutor.service';
+import Link from 'next/link';
 
 export default async function SingleTutorPage({
   params,
@@ -82,24 +83,26 @@ export default async function SingleTutorPage({
                   : 'hover:shadow-md transition'
               }`}
             >
-              <p className="text-sm font-medium">
-                {new Date(slot.startTime).toLocaleDateString()}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {new Date(slot.startTime).toLocaleTimeString([], {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                })}{' '}
-                –{' '}
-                {new Date(slot.endTime).toLocaleTimeString([], {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                })}
-              </p>
+              <Link href={'/dashboard/create-booking'}>
+                <p className="text-sm font-medium">
+                  {new Date(slot.startTime).toLocaleDateString()}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {new Date(slot.startTime).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}{' '}
+                  –{' '}
+                  {new Date(slot.endTime).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
+                </p>
 
-              {!slot.isBooked && (
-                <Badge className="mt-2 w-fit">Available</Badge>
-              )}
+                {!slot.isBooked && (
+                  <Badge className="mt-2 w-fit">Available</Badge>
+                )}
+              </Link>
             </Card>
           ))}
         </div>

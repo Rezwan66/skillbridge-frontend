@@ -5,12 +5,16 @@ export const studentRoutes: Route[] = [
     title: 'Student Home',
     items: [
       {
-        title: 'My Bookings',
-        url: '/dashboard/bookings',
+        title: 'My Profile',
+        url: '/dashboard',
       },
       {
         title: 'Book Courses',
         url: '/dashboard/create-booking',
+      },
+      {
+        title: 'My Bookings',
+        url: '/dashboard/bookings',
       },
       {
         title: 'Edit Profile',
