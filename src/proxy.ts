@@ -10,13 +10,16 @@ const AUTH_ROUTES = ['/login', '/register'];
 
 export async function proxy(request: NextRequest) {
   const { pathname, origin } = request.nextUrl;
-
-  if (AUTH_ROUTES.includes(pathname)) {
-    return NextResponse.next();
-  }
-
   const { data } = await userService.getSession();
   const isAuthenticated = !!data?.user;
+  console.log(isAuthenticated);
+
+  if (AUTH_ROUTES.includes(pathname)) {
+    if (isAuthenticated) {
+      return NextResponse.redirect(new URL('/dashboard', origin));
+    }
+    return NextResponse.next();
+  }
 
   if (!isAuthenticated) {
     return NextResponse.redirect(
@@ -24,9 +27,9 @@ export async function proxy(request: NextRequest) {
     );
   }
 
-  if (isAuthenticated && AUTH_ROUTES.includes(pathname)) {
-    return NextResponse.redirect(new URL('/', origin));
-  }
+  // if (isAuthenticated && AUTH_ROUTES.includes(pathname)) {
+  //   return NextResponse.redirect('/');
+  // }
 
   const userRole = data?.user?.role as Role;
 

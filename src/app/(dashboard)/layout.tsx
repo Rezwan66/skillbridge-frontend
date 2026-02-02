@@ -55,7 +55,7 @@ export default async function DashboardLayout({
           </Breadcrumb>
         </header>
         {/* parallel routes */}
-        <div className="flex flex-1 flex-col gap-4 p-4 container mx-auto">
+        <div className="flex flex-1 flex-col gap-4 p-6 lg:p-10 container mx-auto">
           {userInfo.role === Roles.admin
             ? admin
             : userInfo.role === Roles.tutor

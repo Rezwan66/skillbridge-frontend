@@ -25,6 +25,7 @@ import Link from 'next/link';
 
 import ProfileCard from '../modules/shared/ProfileCard';
 import { UserInfo } from '@/types/user.type';
+import { ModeToggle } from './ModeToggle';
 
 export function AppSidebar({
   user,
@@ -52,8 +53,9 @@ export function AppSidebar({
 
   return (
     <Sidebar {...props}>
-      <div className="p-4">
+      <div className="p-4 flex flex-row items-center justify-between">
         <Logo />
+        <ModeToggle />
       </div>
       <SidebarHeader className="mx-auto hidden lg:block">
         {/* <VersionSwitcher

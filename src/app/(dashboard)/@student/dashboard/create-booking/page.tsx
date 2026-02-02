@@ -1,4 +1,5 @@
 import { createBookingAction } from '@/actions/booking.action';
+import CreateBookingForm from '@/components/modules/dashboard/student/CreateBookingForm';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -53,36 +54,7 @@ export default async function CreateBookingPage() {
                 {tutor.availabilities
                   .filter((a: any) => !a.isBooked)
                   .map((slot: any) => (
-                    <form
-                      key={slot.id}
-                      action={async () => {
-                        'use server';
-                        await createBookingAction(slot.id);
-                      }}
-                    >
-                      <Button
-                        variant="outline"
-                        className="w-full text-left h-auto p-3"
-                        type="submit"
-                      >
-                        <div>
-                          <p className="text-sm font-medium">
-                            {new Date(slot.startTime).toLocaleDateString()}
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            {new Date(slot.startTime).toLocaleTimeString([], {
-                              hour: '2-digit',
-                              minute: '2-digit',
-                            })}{' '}
-                            –
-                            {new Date(slot.endTime).toLocaleTimeString([], {
-                              hour: '2-digit',
-                              minute: '2-digit',
-                            })}
-                          </p>
-                        </div>
-                      </Button>
-                    </form>
+                    <CreateBookingForm key={slot.id} slot={slot} />
                   ))}
               </div>
 

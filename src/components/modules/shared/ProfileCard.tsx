@@ -23,6 +23,7 @@ import { toast } from 'sonner';
 
 export default function ProfileCard({ user }: { user: UserInfo }) {
   const { name, email, image, role } = user;
+  // const role = 'STUDENT';
 
   const initials =
     name
@@ -39,7 +40,7 @@ export default function ProfileCard({ user }: { user: UserInfo }) {
           toast.success('Logged out successfully');
           // redirect to login page
           // router.push('/login'); // bad for logout
-          window.location.href = '/login'; //full repload, clear states
+          window.location.href = '/login'; //full reload, clear states
         },
       },
     });
@@ -86,7 +87,10 @@ export default function ProfileCard({ user }: { user: UserInfo }) {
             <h3 className="font-semibold text-lg leading-none">{name}</h3>
             <p className="text-sm text-muted-foreground">{email}</p>
             {role && (
-              <Badge variant="secondary" className="text-xs capitalize">
+              <Badge
+                variant="secondary"
+                className={`text-xs dark:text-white uppercase ${role === 'STUDENT' ? 'bg-green-400' : role === 'TUTOR' ? 'bg-blue-400' : 'bg-amber-400'}`}
+              >
                 {role.toLowerCase()}
               </Badge>
             )}
@@ -99,7 +103,7 @@ export default function ProfileCard({ user }: { user: UserInfo }) {
           onClick={handleLogout}
           variant="outline"
           size="sm"
-          className="w-full gap-2"
+          className="w-full gap-2 bg-rose-400 text-white"
         >
           <LogOut className="h-4 w-4" />
           Logout

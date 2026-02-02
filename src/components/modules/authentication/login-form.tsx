@@ -67,75 +67,91 @@ export function LoginForm({
     },
   });
 
+  const demoCredentials = {
+    admin: {
+      email: 'super.man@example.com',
+      password: 'password1234',
+    },
+    student: {
+      email: 'eren@ygr.com',
+      password: 'pass1234',
+    },
+    tutor: {
+      email: 'tutor.3@example.com',
+      password: 'password1234',
+    },
+  };
+
   return (
-    <form
-      id="login-form"
-      className={cn('flex flex-col gap-6', className)}
-      {...props}
-      onSubmit={e => {
-        e.preventDefault();
-        form.handleSubmit();
-      }}
-    >
-      <FieldGroup>
-        <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Login to your account</h1>
-          <p className="text-muted-foreground text-sm text-balance">
-            Enter your email below to login to your account
-          </p>
-        </div>
+    <div>
+      <form
+        id="login-form"
+        className={cn('flex flex-col gap-6', className)}
+        {...props}
+        onSubmit={e => {
+          e.preventDefault();
+          form.handleSubmit();
+        }}
+      >
+        <FieldGroup>
+          <div className="flex flex-col items-center gap-1 text-center">
+            <h1 className="text-2xl font-bold">Login to your account</h1>
+            <p className="text-muted-foreground text-sm text-balance">
+              Enter your email below to login to your account
+            </p>
+          </div>
 
-        <form.Field
-          name="email"
-          children={field => {
-            const isInvalid =
-              field.state.meta.isTouched && !field.state.meta.isValid;
-            return (
-              <Field data-invalid={isInvalid}>
-                <FieldLabel htmlFor={field.name}>Email</FieldLabel>
-                <Input
-                  type="email"
-                  id={field.name}
-                  name={field.name}
-                  value={field.state.value}
-                  onChange={e => field.handleChange(e.target.value)}
-                />
-                {isInvalid && <FieldError errors={field.state.meta.errors} />}
-              </Field>
-            );
-          }}
-        />
-        <form.Field
-          name="password"
-          children={field => {
-            const isInvalid =
-              field.state.meta.isTouched && !field.state.meta.isValid;
-            return (
-              <Field data-invalid={isInvalid}>
-                <FieldLabel htmlFor={field.name}>Password</FieldLabel>
-                <Input
-                  type="password"
-                  id={field.name}
-                  name={field.name}
-                  value={field.state.value}
-                  onChange={e => field.handleChange(e.target.value)}
-                />
-                {isInvalid && <FieldError errors={field.state.meta.errors} />}
-              </Field>
-            );
-          }}
-        />
+          <form.Field
+            name="email"
+            children={field => {
+              const isInvalid =
+                field.state.meta.isTouched && !field.state.meta.isValid;
+              return (
+                <Field data-invalid={isInvalid}>
+                  <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                  <Input
+                    type="email"
+                    id={field.name}
+                    name={field.name}
+                    value={field.state.value}
+                    onChange={e => field.handleChange(e.target.value)}
+                  />
+                  {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                </Field>
+              );
+            }}
+          />
+          <form.Field
+            name="password"
+            children={field => {
+              const isInvalid =
+                field.state.meta.isTouched && !field.state.meta.isValid;
+              return (
+                <Field data-invalid={isInvalid}>
+                  <FieldLabel htmlFor={field.name}>Password</FieldLabel>
+                  <Input
+                    type="password"
+                    id={field.name}
+                    name={field.name}
+                    value={field.state.value}
+                    onChange={e => field.handleChange(e.target.value)}
+                  />
+                  {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                </Field>
+              );
+            }}
+          />
 
-        <Field>
-          <Button form="login-form" type="submit">
-            Login
-          </Button>
-        </Field>
+          <Field>
+            <Button form="login-form" type="submit">
+              Login
+            </Button>
+          </Field>
 
-        {/* SOCIAL */}
-        <FieldSeparator></FieldSeparator>
+          {/* SOCIAL */}
+          <FieldSeparator></FieldSeparator>
 
-        {/* <Button
+          {/* <Button
           onClick={() => handleGoogleLogin()}
           variant="outline"
           type="button"
@@ -148,13 +164,51 @@ export function LoginForm({
           </svg>
           Login with Google
         </Button> */}
-        <FieldDescription className="text-center">
-          Don&apos;t have an account?{' '}
-          <Link href="/register" className="underline underline-offset-4">
-            Sign up
-          </Link>
-        </FieldDescription>
-      </FieldGroup>
-    </form>
+          <FieldDescription className="text-center">
+            Don&apos;t have an account?{' '}
+            <Link href="/register" className="underline underline-offset-4">
+              Sign up
+            </Link>
+          </FieldDescription>
+        </FieldGroup>
+      </form>
+
+      {/* demo login */}
+      <div className="flex items-center my-5 justify-around">
+        <Button
+          variant="default"
+          size="xs"
+          className="cursor-pointer bg-green-400 text-black hover:text-white dark:hover:text-black"
+          onClick={() => {
+            form.setFieldValue('email', demoCredentials.student.email);
+            form.setFieldValue('password', demoCredentials.student.password);
+          }}
+        >
+          Demo Student
+        </Button>
+        <Button
+          variant="default"
+          size="xs"
+          className="cursor-pointer bg-blue-400 text-black hover:text-white dark:hover:text-black"
+          onClick={() => {
+            form.setFieldValue('email', demoCredentials.tutor.email);
+            form.setFieldValue('password', demoCredentials.tutor.password);
+          }}
+        >
+          Demo Tutor
+        </Button>
+        <Button
+          variant="default"
+          size="xs"
+          className="cursor-pointer bg-amber-400 text-black hover:text-white dark:hover:text-black"
+          onClick={() => {
+            form.setFieldValue('email', demoCredentials.admin.email);
+            form.setFieldValue('password', demoCredentials.admin.password);
+          }}
+        >
+          Demo Admin
+        </Button>
+      </div>
+    </div>
   );
 }

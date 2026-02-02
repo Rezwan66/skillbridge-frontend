@@ -65,7 +65,7 @@ export function HomeHero() {
             variant="outline"
             className="text-slate-950 dark:text-white"
           >
-            <Link href="/tutors">Become a Tutor</Link>
+            <Link href="/register">Become a Tutor</Link>
           </Button>
         </div>
       </div>

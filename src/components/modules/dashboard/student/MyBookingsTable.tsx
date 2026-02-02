@@ -8,11 +8,16 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { BookingsData } from '@/types/booking.type';
+import { BookingStatusCell } from '../shared/BookingStatusCell';
+import { User } from 'better-auth';
+import { Role } from '@/types/constants.type';
 
 export default function MyBookingsTable({
   bookings,
+  role,
 }: {
   bookings: BookingsData[];
+  role: Role;
 }) {
   if (!bookings.length) {
     return (
@@ -20,7 +25,7 @@ export default function MyBookingsTable({
     );
   }
 
-  console.log(bookings);
+  // console.log(bookings);
 
   return (
     <div className="rounded-md border">
@@ -72,7 +77,7 @@ export default function MyBookingsTable({
                 </TableCell>
 
                 <TableCell>
-                  <Badge
+                  {/* <Badge
                     variant={
                       booking.status === 'COMPLETED'
                         ? 'secondary'
@@ -82,7 +87,8 @@ export default function MyBookingsTable({
                     }
                   >
                     {booking.status}
-                  </Badge>
+                  </Badge> */}
+                  <BookingStatusCell booking={booking} role={role} />
                 </TableCell>
 
                 <TableCell className="text-right">
