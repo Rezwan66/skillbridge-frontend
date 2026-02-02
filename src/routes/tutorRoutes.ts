@@ -5,12 +5,16 @@ export const tutorRoutes: Route[] = [
     title: 'Tutor Home',
     items: [
       {
-        title: 'Profile',
+        title: 'Profile?',
         url: '/dashboard/profile',
       },
       {
-        title: 'History',
-        url: '/dashboard/history',
+        title: 'My Schedule',
+        url: '/dashboard/bookings',
+      },
+      {
+        title: 'Add Slots',
+        url: '/dashboard/availability',
       },
     ],
   },
@@ -22,8 +26,8 @@ export const tutorRoutes: Route[] = [
         url: '/',
       },
       {
-        title: 'Data Fetching',
-        url: '#',
+        title: 'Tutors',
+        url: '/tutors',
         // isActive: true,
       },
     ],

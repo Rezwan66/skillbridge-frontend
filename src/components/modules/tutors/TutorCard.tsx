@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Star } from 'lucide-react';
 import { TutorProfile } from '@/types/tutor.type';
 import { TUTOR_IMAGES } from '@/data/tutorImagePaths';
+import Link from 'next/link';
 
 export function TutorCard({
   tutor,
@@ -15,45 +16,47 @@ export function TutorCard({
   const tutorImage = TUTOR_IMAGES[idx % TUTOR_IMAGES.length];
   return (
     <Card className="hover:shadow-lg transition ">
-      <CardContent className="p-0 space-y-4">
-        {/* Image */}
-        <div className="relative h-48 w-full rounded-t-md overflow-hidden">
-          <Image src={tutorImage} alt="Tutor" fill className="object-cover" />
-        </div>
-        {/* body */}
-        <div className="p-4 space-y-4">
-          {/* Categories */}
-          <div className="flex flex-wrap gap-2">
-            {tutor.tutorCategories.slice(0, 2).map((tc, i) => (
-              <Badge key={i} variant="secondary">
-                {tc.category.name}
-              </Badge>
-            ))}
+      <Link href={`/tutors/${tutor.id}`}>
+        <CardContent className="p-0 space-y-4">
+          {/* Image */}
+          <div className="relative h-48 w-full rounded-t-md overflow-hidden">
+            <Image src={tutorImage} alt="Tutor" fill className="object-cover" />
           </div>
-
-          {/* Bio */}
-          <p className="text-sm text-muted-foreground line-clamp-2">
-            {tutor.bio || 'Experienced tutor ready to help you learn.'}
-          </p>
-
-          {/* Rating & Price */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1 text-sm">
-              <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-              <span>{tutor?.ratingAvg ?? 'New'}</span>
-              {tutor.totalReviews ? (
-                <span className="text-muted-foreground">
-                  ({tutor.totalReviews})
-                </span>
-              ) : null}
+          {/* body */}
+          <div className="p-4 space-y-4">
+            {/* Categories */}
+            <div className="flex flex-wrap gap-2">
+              {tutor.tutorCategories.slice(0, 2).map((tc, i) => (
+                <Badge key={i} variant="secondary">
+                  {tc.category.name}
+                </Badge>
+              ))}
             </div>
 
-            <span className="font-semibold">
-              €{tutor.hourlyRate ?? '--'}/hr
-            </span>
+            {/* Bio */}
+            <p className="text-sm text-muted-foreground line-clamp-2">
+              {tutor.bio || 'Experienced tutor ready to help you learn.'}
+            </p>
+
+            {/* Rating & Price */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1 text-sm">
+                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                <span>{tutor?.ratingAvg ?? 'New'}</span>
+                {tutor.totalReviews ? (
+                  <span className="text-muted-foreground">
+                    ({tutor.totalReviews})
+                  </span>
+                ) : null}
+              </div>
+
+              <span className="font-semibold">
+                €{tutor.hourlyRate ?? '--'}/hr
+              </span>
+            </div>
           </div>
-        </div>
-      </CardContent>
+        </CardContent>
+      </Link>
     </Card>
   );
 }

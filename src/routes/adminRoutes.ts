@@ -2,15 +2,19 @@ import { Route } from '@/types/routes.type';
 
 export const adminRoutes: Route[] = [
   {
-    title: 'User Management',
+    title: 'Platform Management',
     items: [
       {
-        title: 'Analytics',
-        url: '/dashboard/analytics',
+        title: 'Manage Users',
+        url: '/dashboard/users',
       },
       {
-        title: 'Users',
-        url: '/dashboard/users',
+        title: 'All Bookings',
+        url: '/dashboard/bookings',
+      },
+      {
+        title: 'Manage Categories',
+        url: '/dashboard/categories',
       },
     ],
   },
@@ -22,9 +26,9 @@ export const adminRoutes: Route[] = [
         url: '/',
       },
       {
-        title: 'Data Fetching',
-        url: '#',
-        isActive: true,
+        title: 'Tutors',
+        url: '/tutors',
+        // isActive: true,
       },
     ],
   },

@@ -3,6 +3,7 @@ import { TUTOR_IMAGES } from '@/data/tutorImagePaths';
 import { TutorProfile } from '@/types/tutor.type';
 import { Star } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function TutorPageCard({
   tutor,
@@ -13,45 +14,47 @@ export default function TutorPageCard({
 }) {
   const tutorImage = TUTOR_IMAGES[idx % TUTOR_IMAGES.length];
   return (
-    <Card className="hover:shadow-md cursor-pointer transition h-56">
-      <CardContent className="p-4 space-y-4">
-        <div className="flex items-center gap-3">
-          <Image
-            src={tutorImage}
-            alt="Tutor"
-            width={48}
-            height={48}
-            className="rounded-full"
-          />
-          <div>
-            <p className="font-medium">{tutor?.name ?? 'Tutor'}</p>
-            <p className="text-xs text-muted-foreground">
-              {tutor.experienceYears} years experience
-            </p>
-          </div>
-        </div>
-
-        <p className="text-sm line-clamp-2">{tutor.bio}</p>
-
-        {/* Subjects */}
-        <div className="flex flex-wrap gap-2">
-          {tutor.tutorCategories.map((tc: any) => (
-            <span key={tc.id} className="rounded bg-muted px-2 py-1 text-xs">
-              {tc.category.name}
-            </span>
-          ))}
-        </div>
-
-        {/* Footer */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1 text-yellow-500">
-            <Star className="h-4 w-4 fill-yellow-500" />
-            <span className="text-sm">{tutor.ratingAvg ?? 'New'}</span>
+    <Card className="hover:shadow-md cursor-pointer transition h-56 p-0">
+      <Link href={`/tutors/${tutor.id}`}>
+        <CardContent className="p-4 space-y-4">
+          <div className="flex items-center gap-3">
+            <Image
+              src={tutorImage}
+              alt="Tutor"
+              width={48}
+              height={48}
+              className="rounded-full"
+            />
+            <div>
+              <p className="font-medium">{tutor?.name ?? 'Tutor'}</p>
+              <p className="text-xs text-muted-foreground">
+                {tutor.experienceYears} years experience
+              </p>
+            </div>
           </div>
 
-          <p className="font-semibold">€{tutor.hourlyRate}/hr</p>
-        </div>
-      </CardContent>
+          <p className="text-sm line-clamp-2">{tutor.bio}</p>
+
+          {/* Subjects */}
+          <div className="flex flex-wrap gap-2">
+            {tutor.tutorCategories.map((tc: any) => (
+              <span key={tc.id} className="rounded bg-muted px-2 py-1 text-xs">
+                {tc.category.name}
+              </span>
+            ))}
+          </div>
+
+          {/* Footer */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1 text-yellow-500">
+              <Star className="h-4 w-4 fill-yellow-500" />
+              <span className="text-sm">{tutor.ratingAvg ?? 'New'}</span>
+            </div>
+
+            <p className="font-semibold">€{tutor.hourlyRate}/hr</p>
+          </div>
+        </CardContent>
+      </Link>
     </Card>
   );
 }

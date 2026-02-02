@@ -5,12 +5,16 @@ export const studentRoutes: Route[] = [
     title: 'Student Home',
     items: [
       {
-        title: 'Create Blog',
-        url: '/dashboard/create-blog',
+        title: 'My Bookings',
+        url: '/dashboard/bookings',
       },
       {
-        title: 'History',
-        url: '/dashboard/history',
+        title: 'Book Courses',
+        url: '/dashboard/create-booking',
+      },
+      {
+        title: 'Edit Profile',
+        url: '/dashboard/edit-profile',
       },
     ],
   },
@@ -22,8 +26,8 @@ export const studentRoutes: Route[] = [
         url: '/',
       },
       {
-        title: 'Data Fetching',
-        url: '#',
+        title: 'Tutors',
+        url: '/tutors',
         // isActive: true,
       },
     ],
