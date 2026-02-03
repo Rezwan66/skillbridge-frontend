@@ -1,4 +1,13 @@
-import { Route } from '@/types/routes.type';
+import { Route } from '@/types/route.type';
+
+import {
+  User,
+  BookOpen,
+  Calendar,
+  Settings,
+  Home,
+  GraduationCap,
+} from 'lucide-react';
 
 export const studentRoutes: Route[] = [
   {
@@ -7,18 +16,22 @@ export const studentRoutes: Route[] = [
       {
         title: 'My Profile',
         url: '/dashboard',
+        icon: User,
       },
       {
         title: 'Book Courses',
         url: '/dashboard/create-booking',
+        icon: BookOpen,
       },
       {
         title: 'My Bookings',
         url: '/dashboard/bookings',
+        icon: Calendar,
       },
       {
         title: 'Edit Profile',
         url: '/dashboard/edit-profile',
+        icon: Settings,
       },
     ],
   },
@@ -28,11 +41,12 @@ export const studentRoutes: Route[] = [
       {
         title: 'Home',
         url: '/',
+        icon: Home,
       },
       {
         title: 'Tutors',
         url: '/tutors',
-        // isActive: true,
+        icon: GraduationCap,
       },
     ],
   },

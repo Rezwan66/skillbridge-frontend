@@ -26,6 +26,7 @@ import Link from 'next/link';
 import ProfileCard from '../modules/shared/ProfileCard';
 import { UserInfo } from '@/types/user.type';
 import { ModeToggle } from './ModeToggle';
+import MenuItemLink from '../icons/MenuItemLink';
 
 export function AppSidebar({
   user,
@@ -79,7 +80,7 @@ export function AppSidebar({
                   {item.items.map(item => (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild isActive={item.isActive}>
-                        <Link href={item.url}>{item.title}</Link>
+                        <MenuItemLink item={item} />
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}

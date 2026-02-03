@@ -1,4 +1,13 @@
-import { Route } from '@/types/routes.type';
+import { Route } from '@/types/route.type';
+
+import {
+  User,
+  Users,
+  Calendar,
+  FolderOpen,
+  Home,
+  GraduationCap,
+} from 'lucide-react';
 
 export const adminRoutes: Route[] = [
   {
@@ -7,18 +16,22 @@ export const adminRoutes: Route[] = [
       {
         title: 'My Profile',
         url: '/dashboard',
+        icon: User, // ✅ Add icon
       },
       {
         title: 'Manage Users',
         url: '/dashboard/users',
+        icon: Users,
       },
       {
         title: 'All Bookings',
         url: '/dashboard/bookings',
+        icon: Calendar,
       },
       {
         title: 'Manage Categories',
         url: '/dashboard/categories',
+        icon: FolderOpen,
       },
     ],
   },
@@ -28,11 +41,12 @@ export const adminRoutes: Route[] = [
       {
         title: 'Home',
         url: '/',
+        icon: Home,
       },
       {
         title: 'Tutors',
         url: '/tutors',
-        // isActive: true,
+        icon: GraduationCap,
       },
     ],
   },

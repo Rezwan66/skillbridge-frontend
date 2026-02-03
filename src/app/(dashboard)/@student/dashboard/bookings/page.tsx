@@ -24,7 +24,7 @@ export default async function MyBookingsPage({
     userPromise,
   ]);
   const bookings = bookingData?.data?.data ?? [];
-  const user = userData?.data?.user ?? [];
+  const user = userData?.data?.user ?? {};
   // console.log(bookings);
   // console.log(user);
   return (

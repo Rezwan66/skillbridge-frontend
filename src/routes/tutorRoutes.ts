@@ -1,4 +1,13 @@
-import { Route } from '@/types/routes.type';
+import { Route } from '@/types/route.type';
+
+import {
+  User,
+  UserCircle,
+  CalendarDays,
+  CalendarPlus,
+  Home,
+  GraduationCap,
+} from 'lucide-react';
 
 export const tutorRoutes: Route[] = [
   {
@@ -7,18 +16,22 @@ export const tutorRoutes: Route[] = [
       {
         title: 'My Profile',
         url: '/dashboard',
+        icon: User,
       },
       {
         title: 'Profile?',
         url: '/dashboard/profile',
+        icon: UserCircle,
       },
       {
         title: 'My Schedule',
         url: '/dashboard/bookings',
+        icon: CalendarDays,
       },
       {
         title: 'Add Slots',
         url: '/dashboard/availability',
+        icon: CalendarPlus,
       },
     ],
   },
@@ -28,11 +41,12 @@ export const tutorRoutes: Route[] = [
       {
         title: 'Home',
         url: '/',
+        icon: Home,
       },
       {
         title: 'Tutors',
         url: '/tutors',
-        // isActive: true,
+        icon: GraduationCap,
       },
     ],
   },

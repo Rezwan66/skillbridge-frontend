@@ -89,7 +89,7 @@ export default function ProfileCard({ user }: { user: UserInfo }) {
             {role && (
               <Badge
                 variant="secondary"
-                className={`text-xs dark:text-white uppercase ${role === 'STUDENT' ? 'bg-green-400' : role === 'TUTOR' ? 'bg-blue-400' : 'bg-amber-400'}`}
+                className={`text-xs text-black uppercase ${role === 'STUDENT' ? 'bg-green-400' : role === 'TUTOR' ? 'bg-blue-400' : 'bg-amber-400'}`}
               >
                 {role.toLowerCase()}
               </Badge>

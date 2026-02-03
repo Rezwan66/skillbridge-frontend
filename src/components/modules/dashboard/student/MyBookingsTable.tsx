@@ -11,6 +11,9 @@ import { BookingsData } from '@/types/booking.type';
 import { BookingStatusCell } from '../shared/BookingStatusCell';
 import { User } from 'better-auth';
 import { Role } from '@/types/constants.type';
+import { BookingStatuses, Roles } from '@/constants';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function MyBookingsTable({
   bookings,
@@ -37,6 +40,11 @@ export default function MyBookingsTable({
             <TableHead>Date</TableHead>
             <TableHead>Time</TableHead>
             <TableHead>Status</TableHead>
+            {role === Roles.student ? (
+              <TableHead>Review</TableHead>
+            ) : (
+              <TableHead>View Booking</TableHead>
+            )}
             <TableHead className="text-right">Price</TableHead>
           </TableRow>
         </TableHeader>
@@ -75,7 +83,7 @@ export default function MyBookingsTable({
                     minute: '2-digit',
                   })}
                 </TableCell>
-
+                {/* status */}
                 <TableCell>
                   {/* <Badge
                     variant={
@@ -90,6 +98,29 @@ export default function MyBookingsTable({
                   </Badge> */}
                   <BookingStatusCell booking={booking} role={role} />
                 </TableCell>
+
+                {role === Roles.student ? (
+                  <TableCell>
+                    {booking.status === BookingStatuses.completed && (
+                      <Badge
+                        variant="default"
+                        className="text-xs cursor-pointer"
+                      >
+                        <Link href={`/dashboard/bookings/${booking.id}`}>
+                          Review
+                        </Link>
+                      </Badge>
+                    )}
+                  </TableCell>
+                ) : (
+                  <TableCell>
+                    <Badge variant="default" className="text-xs cursor-pointer">
+                      <Link href={`/dashboard/bookings/${booking.id}`}>
+                        View
+                      </Link>
+                    </Badge>
+                  </TableCell>
+                )}
 
                 <TableCell className="text-right">
                   €{tutor?.hourlyRate}

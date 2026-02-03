@@ -43,6 +43,8 @@ export const bookingService = {
           'Content-Type': 'application/json',
           Cookie: cookieStore.toString(),
         },
+        cache: 'no-store',
+        next: { tags: ['booking'] },
       });
       const data = await res.json();
 

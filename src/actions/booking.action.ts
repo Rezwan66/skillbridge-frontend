@@ -32,5 +32,7 @@ export async function updateBookingStatusAction(bookingId: string) {
   }
 
   revalidatePath('/dashboard/bookings');
+  revalidateTag('bookings', 'max');
+  revalidateTag('availabilities', 'max');
   return { success: true, data };
 }
