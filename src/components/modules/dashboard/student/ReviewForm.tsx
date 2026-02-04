@@ -8,6 +8,7 @@ import { useForm } from '@tanstack/react-form';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { z } from 'zod';
+import StarRating from './StarRating';
 
 const reviewSchema = z.object({
   rating: z.number().min(1).max(5),
@@ -40,6 +41,7 @@ export default function ReviewForm({ bookingId }: { bookingId: string }) {
 
       try {
         const res = await createReviewAction(reviewData);
+        // console.log(reviewData);
 
         if (res.error) {
           return toast.error(res.error.message, { id: toastId });
@@ -70,14 +72,21 @@ export default function ReviewForm({ bookingId }: { bookingId: string }) {
           children={field => (
             <Field>
               <FieldLabel htmlFor={field.name}>Rating (1-5)</FieldLabel>
-              <Input
+              {/* <Input
                 type="number"
                 min={1}
                 max={5}
                 value={field.state.value}
                 onChange={e => field.handleChange(+e.target.value)}
                 placeholder="Rating (1–5)"
+              /> */}
+              <StarRating
+                value={field.state.value}
+                onChange={field.handleChange}
               />
+              <p className="text-xs text-muted-foreground">
+                Click to rate from 1 to 5
+              </p>
             </Field>
           )}
         />

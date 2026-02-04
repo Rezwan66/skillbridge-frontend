@@ -114,11 +114,16 @@ export default function MyBookingsTable({
                   </TableCell>
                 ) : (
                   <TableCell>
-                    <Badge variant="default" className="text-xs cursor-pointer">
-                      <Link href={`/dashboard/bookings/${booking.id}`}>
-                        View
-                      </Link>
-                    </Badge>
+                    {booking.status === BookingStatuses.completed && (
+                      <Badge
+                        variant="default"
+                        className="text-xs cursor-pointer"
+                      >
+                        <Link href={`/dashboard/bookings/${booking.id}`}>
+                          View
+                        </Link>
+                      </Badge>
+                    )}
                   </TableCell>
                 )}
 

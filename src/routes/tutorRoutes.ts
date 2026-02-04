@@ -20,7 +20,7 @@ export const tutorRoutes: Route[] = [
       },
       {
         title: 'Profile?',
-        url: '/dashboard/profile',
+        url: '/dashboard/create-profile',
         icon: UserCircle,
       },
       {

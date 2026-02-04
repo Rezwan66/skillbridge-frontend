@@ -13,6 +13,7 @@ export const userService = {
           Cookie: cookieStore.toString(),
         },
         cache: 'no-store',
+        next: { tags: ['user'] },
       });
       const session = await res.json();
 
@@ -21,6 +22,29 @@ export const userService = {
       }
 
       return { data: session, error: null };
+    } catch (error) {
+      console.error(error);
+      return { data: null, error: { message: 'Something Went Wrong!' } };
+    }
+  },
+
+  getStats: async function () {
+    try {
+      const cookieStore = await cookies();
+      const res = await fetch(`${API_URL}/api/users/stats`, {
+        headers: {
+          Cookie: cookieStore.toString(),
+        },
+        cache: 'no-store',
+        next: { tags: ['stats'] },
+      });
+      const stats = await res.json();
+
+      if (stats === null) {
+        return { data: null, error: { message: 'Stats are missing.' } };
+      }
+
+      return { data: stats, error: null };
     } catch (error) {
       console.error(error);
       return { data: null, error: { message: 'Something Went Wrong!' } };

@@ -96,7 +96,6 @@ export default async function ViewBookingPage({
           )}
 
           {isStudent && !hasReview && <ReviewForm bookingId={booking.id} />}
-          {/* <ReviewForm bookingId={booking.id} /> */}
 
           {!isStudent && !hasReview && (
             <p className="text-sm text-muted-foreground">

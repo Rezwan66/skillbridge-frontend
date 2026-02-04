@@ -25,7 +25,7 @@ export default async function ViewBookingPage({
   const user = userData?.data?.user ?? {};
   // console.log(booking);
   //   console.log(user);
-  // if (!booking) return null;
+  if (!booking) return null;
 
   const isStudent = user?.role === Roles.student;
   const hasReview = Boolean(booking.review);
@@ -96,7 +96,6 @@ export default async function ViewBookingPage({
           )}
 
           {isStudent && !hasReview && <ReviewForm bookingId={booking.id} />}
-          {/* <ReviewForm bookingId={booking.id} /> */}
 
           {!isStudent && !hasReview && (
             <p className="text-sm text-muted-foreground">
