@@ -41,8 +41,32 @@ export const tutorService = {
 
   getTutorById: async function (id: string) {
     try {
-      const res = await fetch(`${API_URL}/api/tutors/${id}`);
+      const res = await fetch(`${API_URL}/api/tutors/${id}`, {
+        cache: 'no-store',
+        next: { tags: ['tutor'] },
+      });
       const data = await res.json();
+
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error: { message: 'Something Went Wrong!' } };
+    }
+  },
+
+  getMyTutorProfile: async function () {
+    try {
+      const cookieStore = await cookies();
+      const res = await fetch(`${API_URL}/api/tutors/my-profile`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: cookieStore.toString(),
+        },
+        cache: 'no-store',
+        next: { tags: ['my-tutor-profile'] },
+      });
+      const data = await res.json();
+      // console.log('from service-->', data);
 
       return { data, error: null };
     } catch (error) {

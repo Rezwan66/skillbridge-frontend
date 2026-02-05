@@ -1,6 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardHeader } from '@/components/ui/card';
+import Link from 'next/link';
+import { UserPen } from 'lucide-react';
+import { Roles } from '@/constants';
 
 export default function DashboardProfile({ user }: { user: any }) {
   const initials =
@@ -65,6 +68,24 @@ export default function DashboardProfile({ user }: { user: any }) {
             </Badge>
           </div>
         </div>
+        {/* edit */}
+        {user.role === Roles.admin ? null : (
+          <div className="flex flex-col items-center">
+            <UserPen className="text-xs" />
+            <Link
+              className="underline text-xs text-center"
+              href={`/dashboard/${
+                user.role === Roles.student
+                  ? 'edit-profile'
+                  : user.role === Roles.tutor
+                    ? 'create-profile'
+                    : ''
+              }`}
+            >
+              {user.role === Roles.tutor ? 'Tutor Profile' : 'Edit Profile'}
+            </Link>
+          </div>
+        )}
       </div>
     </Card>
   );

@@ -25,7 +25,7 @@ export async function createBookingAction(availabilityId: string) {
 
 export async function updateBookingStatusAction(bookingId: string) {
   const { data, error } = await bookingService.updateBookingStatus(bookingId);
-  console.log({ data, error });
+  // console.log({ data, error });
 
   if (data?.error) {
     return { success: false, error: data.error };

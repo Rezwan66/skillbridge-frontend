@@ -7,7 +7,7 @@ import { userService } from '@/services/user.service';
 export default async function StudentDashboard() {
   const { data } = await userService.getSession();
   const { data: stats } = await userService.getStats();
-  console.log(stats);
+  // console.log(stats);
   const { user, session } = data;
   return (
     <div className="space-y-6 max-w-4xl mx-auto">

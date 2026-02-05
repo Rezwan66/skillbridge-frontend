@@ -10,7 +10,7 @@ export default function TutorsPageLayout({
   tutors: TutorProfile[];
   categories: Category[];
 }) {
-  console.log(tutors);
+  // console.log(tutors);
 
   return (
     <div className="container py-10 min-h-screen">

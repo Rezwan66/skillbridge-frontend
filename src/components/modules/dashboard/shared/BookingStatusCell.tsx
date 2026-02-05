@@ -40,7 +40,7 @@ export function BookingStatusCell({ booking, role }: Props) {
     }).then(async result => {
       if (result.isConfirmed) {
         const res = await updateBookingStatusAction(booking.id);
-        console.log(res);
+        // console.log(res);
         if (res.success) {
           Swal.fire({
             title: 'Done',

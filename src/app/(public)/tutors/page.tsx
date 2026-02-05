@@ -30,7 +30,7 @@ export default async function TutorsPage({ searchParams }: PageProps) {
     categoriesPromise,
   ]);
 
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <div>
