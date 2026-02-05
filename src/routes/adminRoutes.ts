@@ -14,7 +14,7 @@ export const adminRoutes: Route[] = [
     title: 'Platform Management',
     items: [
       {
-        title: 'Profile & System',
+        title: 'Overview',
         url: '/dashboard',
         icon: User, //  Add icon
       },

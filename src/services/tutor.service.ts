@@ -172,7 +172,7 @@ export const tutorService = {
     }
   },
 
-  updateTutorCategory: async function (payload: { categoryIds: string[] }) {
+  updateTutorCategory: async function (payload: string[]) {
     try {
       const cookieStore = await cookies();
       const res = await fetch(`${API_URL}/api/tutors/categories`, {
@@ -181,7 +181,7 @@ export const tutorService = {
           'Content-Type': 'application/json',
           Cookie: cookieStore.toString(),
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ categoryIds: payload }),
       });
 
       const data = await res.json();

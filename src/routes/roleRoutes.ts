@@ -6,7 +6,8 @@ export const ROLE_ROUTES: Record<Role, string[]> = {
   TUTOR: [
     '/dashboard/bookings',
     '/dashboard/availability',
-    '/dashboard/create-profile',
+    '/dashboard/profile',
+    '/dashboard/categories',
   ],
   STUDENT: [
     '/dashboard/create-booking',

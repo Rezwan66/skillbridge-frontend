@@ -78,7 +78,7 @@ export default function DashboardProfile({ user }: { user: any }) {
                 user.role === Roles.student
                   ? 'edit-profile'
                   : user.role === Roles.tutor
-                    ? 'create-profile'
+                    ? 'profile'
                     : ''
               }`}
             >

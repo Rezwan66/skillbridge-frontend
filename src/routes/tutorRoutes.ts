@@ -7,6 +7,7 @@ import {
   CalendarPlus,
   Home,
   GraduationCap,
+  Shapes,
 } from 'lucide-react';
 
 export const tutorRoutes: Route[] = [
@@ -14,24 +15,29 @@ export const tutorRoutes: Route[] = [
     title: 'Tutor Home',
     items: [
       {
-        title: 'My Profile',
+        title: 'Overview',
         url: '/dashboard',
         icon: User,
       },
       {
         title: 'Tutor Profile',
-        url: '/dashboard/create-profile',
+        url: '/dashboard/profile',
         icon: UserCircle,
+      },
+      {
+        title: 'Teaching Categories',
+        url: '/dashboard/categories',
+        icon: Shapes,
+      },
+      {
+        title: 'Availability',
+        url: '/dashboard/availability',
+        icon: CalendarPlus,
       },
       {
         title: 'My Schedule',
         url: '/dashboard/bookings',
         icon: CalendarDays,
-      },
-      {
-        title: 'Add Slots',
-        url: '/dashboard/availability',
-        icon: CalendarPlus,
       },
     ],
   },

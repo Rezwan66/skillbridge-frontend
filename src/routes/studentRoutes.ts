@@ -14,7 +14,7 @@ export const studentRoutes: Route[] = [
     title: 'Student Home',
     items: [
       {
-        title: 'My Profile',
+        title: 'Overview',
         url: '/dashboard',
         icon: User,
       },
