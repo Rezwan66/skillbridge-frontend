@@ -16,7 +16,7 @@ export default function TutorCategoriesForm({
   const [selected, setSelected] = useState<string[]>(tutorsCategories);
   const [isPending, startTransition] = useTransition();
   //   console.log(tutorsCategories);
-  console.log(selected);
+  // console.log(selected);
 
   const toggleCategory = (id: string) => {
     setSelected(prev =>
