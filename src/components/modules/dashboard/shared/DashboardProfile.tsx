@@ -35,10 +35,7 @@ export default function DashboardProfile({ user }: { user: any }) {
         {/* image */}
         <div className="relative">
           <Avatar className="h-14 w-14 border-2 border-primary/10">
-            <AvatarImage
-              src={user.image ?? undefined}
-              alt={'user profile image'}
-            />
+            <AvatarImage src={user.image ?? ''} alt={'user profile image'} />
             <AvatarFallback className="bg-primary/10 text-lg font-semibold">
               {initials}
             </AvatarFallback>

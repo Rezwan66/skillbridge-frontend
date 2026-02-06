@@ -61,6 +61,7 @@ export function BookingStatusCell({ booking, role }: Props) {
   return (
     <div className="flex gap-2 items-center">
       <Badge
+        className={`${booking.status === 'COMPLETED' && 'bg-green-400'}`}
         variant={
           booking.status === 'COMPLETED'
             ? 'secondary'

@@ -107,7 +107,7 @@ export default function MyBookingsTable({
                         className="text-xs cursor-pointer"
                       >
                         <Link href={`/dashboard/bookings/${booking.id}`}>
-                          Review
+                          {booking.review ? 'Review' : 'View'}
                         </Link>
                       </Badge>
                     )}

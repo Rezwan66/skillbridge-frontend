@@ -43,7 +43,7 @@ export default function TutorAvailabilityManager({
   const [end, setEnd] = useState('');
   const [isPending, startTransition] = useTransition();
 
-  console.log(availabilities);
+  //   console.log(availabilities);
 
   const createAvailability = () => {
     if (!date || !start || !end) {
@@ -60,7 +60,7 @@ export default function TutorAvailabilityManager({
     startTime.setHours(+sh, +sm);
     endTime.setHours(+eh, +em);
 
-    console.log({ startTime, endTime });
+    // console.log({ startTime, endTime });
 
     startTransition(async () => {
       try {
@@ -82,7 +82,9 @@ export default function TutorAvailabilityManager({
   };
 
   const updateAvailability = (id: string) => {
-    if (!date || !start || !end) return;
+    if (!date || !start || !end) {
+      return toast.error('Please set the correct date and times');
+    }
     // console.log(id);
     const startTime = new Date(date);
     const endTime = new Date(date);
@@ -170,8 +172,32 @@ export default function TutorAvailabilityManager({
               className="flex items-center justify-between rounded-md border p-4 gap-4"
             >
               <div className="text-sm">
-                {new Date(slot.startTime).toLocaleString()} –{' '}
-                {new Date(slot.endTime).toLocaleTimeString()}
+                {/* {new Date(slot.startTime).toLocaleString()} –{' '}
+                {new Date(slot.endTime).toLocaleTimeString()} */}
+                <div className="text-sm text-muted-foreground space-y-1">
+                  <p>
+                    📅 Date:{' '}
+                    {new Date(slot.startTime).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    })}
+                  </p>
+                  <p>
+                    🕐 Start:{' '}
+                    {new Date(slot.startTime).toLocaleTimeString('en-US', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </p>
+                  <p>
+                    🕑 End:{' '}
+                    {new Date(slot.endTime).toLocaleTimeString('en-US', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </p>
+                </div>
               </div>
 
               {!slot.isBooked && (

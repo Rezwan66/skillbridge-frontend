@@ -75,7 +75,7 @@ export default function ProfileCard({ user }: { user: UserInfo }) {
         <div className="flex items-center gap-4">
           <div className="relative">
             <Avatar className="h-14 w-14 border-2 border-primary/10">
-              <AvatarImage src={image ?? undefined} alt={name} />
+              <AvatarImage src={image ?? ''} alt={name} />
               <AvatarFallback className="bg-primary/10 text-lg font-semibold">
                 {initials}
               </AvatarFallback>
