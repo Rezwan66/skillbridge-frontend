@@ -2,7 +2,12 @@ import { Role } from '@/types/constants.type';
 
 // Role-based route permissions
 export const ROLE_ROUTES: Record<Role, string[]> = {
-  ADMIN: ['/dashboard/users', '/dashboard/bookings', '/dashboard/categories'],
+  ADMIN: [
+    '/dashboard/users',
+    '/dashboard/bookings',
+    '/dashboard/categories',
+    '/dashboard/manage-tutors',
+  ],
   TUTOR: [
     '/dashboard/bookings',
     '/dashboard/availability',

@@ -2,6 +2,8 @@ export interface TutorProfile {
   id: string;
   bio?: string | null;
   name?: string | null;
+  createdAt?: Date;
+  updatedAt?: Date;
   hourlyRate?: number | null;
   experienceYears?: number | null;
   ratingAvg?: number | null;

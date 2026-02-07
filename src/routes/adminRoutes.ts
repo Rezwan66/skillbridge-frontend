@@ -7,6 +7,7 @@ import {
   FolderOpen,
   Home,
   GraduationCap,
+  TypeOutline,
 } from 'lucide-react';
 
 export const adminRoutes: Route[] = [
@@ -22,6 +23,11 @@ export const adminRoutes: Route[] = [
         title: 'Manage Users',
         url: '/dashboard/users',
         icon: Users,
+      },
+      {
+        title: 'Manage Tutors',
+        url: '/dashboard/manage-tutors',
+        icon: TypeOutline,
       },
       {
         title: 'All Bookings',

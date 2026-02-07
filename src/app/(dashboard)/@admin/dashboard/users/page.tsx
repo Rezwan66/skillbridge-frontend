@@ -1,8 +1,7 @@
 import ManageAllUsersTable from '@/components/modules/dashboard/admin/ManageAllUsersTable';
-import MyBookingsTable from '@/components/modules/dashboard/student/MyBookingsTable';
+
 import { adminService } from '@/services/admin.service';
-import { bookingService } from '@/services/booking.service';
-import { userService } from '@/services/user.service';
+
 import { UserInfo } from '@/types/user.type';
 
 export default async function AllUsersPage() {

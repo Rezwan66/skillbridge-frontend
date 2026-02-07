@@ -19,6 +19,7 @@ import { UserStatuses } from '@/constants';
 import { UserStatus } from '@/types/constants.type';
 
 import { UserInfo } from '@/types/user.type';
+import { ShieldCheck, ShieldCheckIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function ManageAllUsersTable({
@@ -74,6 +75,7 @@ export default function ManageAllUsersTable({
             <TableHead>Role</TableHead>
 
             <TableHead>Status</TableHead>
+            <TableHead>Ban/Unban</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -110,7 +112,9 @@ export default function ManageAllUsersTable({
                 {/* status */}
                 <TableCell className="flex flex-row gap-2">
                   <p className="flex-1"> {user?.status}</p>
-                  <div className="flex-1">
+                </TableCell>
+                <TableCell>
+                  <div className="flex-1 flex flex-row gap-1">
                     {/* BANNED */}
                     <Tooltip>
                       <TooltipTrigger asChild>
@@ -143,7 +147,7 @@ export default function ManageAllUsersTable({
                               status: UserStatuses.active,
                             })
                           }
-                          className="text-xs text-red-500 "
+                          className="text-xs text-green-400"
                         >
                           ✅
                         </Button>
@@ -154,34 +158,6 @@ export default function ManageAllUsersTable({
                     </Tooltip>
                   </div>
                 </TableCell>
-
-                {/* {role === Roles.student ? (
-                  <TableCell>
-                    {booking.status === BookingStatuses.completed && (
-                      <Badge
-                        variant="default"
-                        className="text-xs cursor-pointer"
-                      >
-                        <Link href={`/dashboard/bookings/${booking.id}`}>
-                          {booking.review ? 'Review' : 'View'}
-                        </Link>
-                      </Badge>
-                    )}
-                  </TableCell>
-                ) : (
-                  <TableCell>
-                    {booking.status === BookingStatuses.completed && (
-                      <Badge
-                        variant="default"
-                        className="text-xs cursor-pointer"
-                      >
-                        <Link href={`/dashboard/bookings/${booking.id}`}>
-                          View
-                        </Link>
-                      </Badge>
-                    )}
-                  </TableCell>
-                )} */}
               </TableRow>
             );
           })}

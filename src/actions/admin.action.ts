@@ -26,6 +26,6 @@ export async function updateTutorFeaturedStatusAction(
   payload: { isFeatured: boolean },
 ) {
   const res = await adminService.updateTutorFeaturedStatus(id, payload);
-  updateTag('allUsers');
+  updateTag('tutors');
   return res;
 }
