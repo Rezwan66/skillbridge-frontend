@@ -24,6 +24,7 @@ export function TutorCard({
           </div>
           {/* body */}
           <div className="p-4 space-y-4">
+            <h3 className="text-lg font-semibold">{tutor.name ?? 'Tutor'}</h3>
             {/* Categories */}
             <div className="flex flex-wrap gap-2">
               {tutor.tutorCategories.slice(0, 2).map((tc, i) => (

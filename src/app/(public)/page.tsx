@@ -1,3 +1,4 @@
+import HomeFeaturesSection from '@/components/layout/HomeFeaturesSection';
 import CategoriesMarquee from '@/components/modules/home/CategoriesMarquee';
 import { FeaturedTutors } from '@/components/modules/home/FeaturedTutors';
 import { HomeHero } from '@/components/modules/home/HomeHero';
@@ -45,6 +46,8 @@ export default async function HomePage() {
       <HomeHero />
       <FeaturedTutors tutors={tutors?.data?.data ?? []} />
       <CategoriesMarquee categories={categories?.data?.data ?? []} />
+      {/* <HomeHeroFeatures /> */}
+      <HomeFeaturesSection />
       <TestimonialsSection reviews={reviews?.data?.data ?? []} />
     </div>
   );

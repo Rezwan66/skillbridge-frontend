@@ -74,9 +74,9 @@ export default function AddCategoryForm() {
       className="space-y-4"
     >
       <FieldGroup>
-        <FieldLabel className="text-md font-medium text-muted-foreground">
+        <p className="text-muted-foreground">
           Add a category name to be added to the website
-        </FieldLabel>
+        </p>
 
         {/* name */}
         <form.Field

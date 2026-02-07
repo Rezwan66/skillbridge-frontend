@@ -77,18 +77,18 @@ const Navbar = ({
       title: 'Tutors',
       url: '/tutors',
     },
-    {
-      title: 'Subjects',
-      url: '/subjects',
-    },
-    {
-      title: 'About Us',
-      url: '/about',
-    },
-    {
-      title: 'Contact',
-      url: '/contact',
-    },
+    // {
+    //   title: 'Subjects',
+    //   url: '/subjects',
+    // },
+    // {
+    //   title: 'About Us',
+    //   url: '/about',
+    // },
+    // {
+    //   title: 'Contact',
+    //   url: '/contact',
+    // },
   ],
   auth = {
     login: { title: 'Login', url: '/login' },
@@ -123,7 +123,7 @@ const Navbar = ({
               </span>
             </Link> */}
             <Logo />
-            <div className="flex items-center">
+            <div className="flex items-center absolute left-1/2 -translate-x-1/2">
               <NavigationMenu>
                 <NavigationMenuList>
                   {menu.map(item => renderMenuItem(item))}
@@ -159,7 +159,7 @@ const Navbar = ({
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href={logo.url} className="flex items-center gap-2">
+            {/* <Link href={logo.url} className="flex items-center gap-2">
               <Image
                 src={logo.src}
                 width={32}
@@ -167,7 +167,8 @@ const Navbar = ({
                 className="max-h-8 dark:invert"
                 alt={logo.alt}
               />
-            </Link>
+            </Link> */}
+            <Logo />
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
@@ -177,7 +178,7 @@ const Navbar = ({
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <Link href={logo.url} className="flex items-center gap-2">
+                    {/* <Link href={logo.url} className="flex items-center gap-2">
                       <Image
                         src={logo.src}
                         width={32}
@@ -185,7 +186,8 @@ const Navbar = ({
                         className="max-h-8 dark:invert"
                         alt={logo.alt}
                       />
-                    </Link>
+                    </Link> */}
+                    <Logo />
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
@@ -198,8 +200,7 @@ const Navbar = ({
                   </Accordion>
 
                   {user ? (
-                    <div className="flex items-center gap-3 justify-center">
-                      <ModeToggle />
+                    <div className="flex items-center gap-3 justify-between">
                       <UserMenu
                         user={{
                           name: user.name,
@@ -207,6 +208,7 @@ const Navbar = ({
                           image: user.image,
                         }}
                       />
+                      <ModeToggle />
                     </div>
                   ) : (
                     <div className="flex flex-col gap-3">

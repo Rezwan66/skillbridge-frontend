@@ -32,7 +32,7 @@ export default async function AddCategories() {
       {/* DISPLAY CATEGORIES */}
       <Card className="p-6">
         <CardHeader>
-          <h2 className="text-lg font-semibold">Active Categories:</h2>
+          <h2 className="text-lg font-semibold">All Categories:</h2>
           <p className="text-muted-foreground italic">
             Click to activate/deactivate
           </p>

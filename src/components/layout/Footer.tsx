@@ -41,31 +41,28 @@ const Footer = ({
     {
       title: 'Tutors',
       links: [
-        { text: 'Overview', url: '#' },
-        { text: 'Pricing', url: '#' },
-        { text: 'Marketplace', url: '#' },
-        { text: 'Features', url: '#' },
-        { text: 'Integrations', url: '#' },
-        { text: 'Pricing', url: '#' },
+        { text: 'Overview', url: '/tutors' },
+        { text: 'Pricing', url: '/tutors' },
+        { text: 'Rating', url: '/tutors' },
+        { text: 'Category', url: '/tutors' },
+        { text: 'Search', url: '/tutors' },
       ],
     },
     {
       title: 'Subjects',
       links: [
-        { text: 'About', url: '#' },
-        { text: 'Team', url: '#' },
-        { text: 'Blog', url: '#' },
-        { text: 'Careers', url: '#' },
-        { text: 'Contact', url: '#' },
-        { text: 'Privacy', url: '#' },
+        { text: 'About', url: '/' },
+        { text: 'Subjects', url: '/' },
+        { text: 'Categories', url: '/' },
+        { text: 'Learn', url: '/' },
       ],
     },
     {
       title: 'About Us',
       links: [
-        { text: 'Help', url: '#' },
-        { text: 'Sales', url: '#' },
-        { text: 'Advertise', url: '#' },
+        { text: 'Services', url: '/' },
+        { text: 'Home', url: '/' },
+        { text: 'Features', url: '/' },
       ],
     },
     {

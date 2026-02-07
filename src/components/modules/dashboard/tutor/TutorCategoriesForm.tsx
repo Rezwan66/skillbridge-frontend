@@ -5,12 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { updateTutorCategoriesAction } from '@/actions/tutor.action';
 import { toast } from 'sonner';
+import { Category } from '@/types/category.type';
 
 export default function TutorCategoriesForm({
   categories = [],
   tutorsCategories = [],
 }: {
-  categories: Record<string, string | boolean>[];
+  categories: Category[];
   tutorsCategories: string[];
 }) {
   const [selected, setSelected] = useState<string[]>(tutorsCategories);

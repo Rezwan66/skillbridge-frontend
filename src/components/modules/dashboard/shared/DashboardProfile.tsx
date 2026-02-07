@@ -60,7 +60,7 @@ export default function DashboardProfile({ user }: { user: any }) {
               </Badge>
             )}
 
-            <Badge variant="outline" className="text-xs text-black uppercase">
+            <Badge variant="outline" className="text-xs  uppercase">
               {user.status}
             </Badge>
           </div>

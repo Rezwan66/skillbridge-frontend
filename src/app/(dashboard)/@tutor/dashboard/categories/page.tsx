@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { categoryService } from '@/services/category.service';
 import { tutorService } from '@/services/tutor.service';
+import { Category } from '@/types/category.type';
 
 export default async function CategoriesPage() {
   const { data: profileData } = await tutorService.getMyTutorProfile();
@@ -11,8 +12,9 @@ export default async function CategoriesPage() {
 
   const { data } = await categoryService.getAllCategories();
   //   console.log(data?.data);
-  const categories = data?.data ?? [];
+  const categories: Category[] = data?.data ?? [];
   // console.log(categories, tutorProfile);
+  const activeCategories = categories.filter(cat => cat.isActive === true);
   return (
     <section className="container mx-auto max-w-3xl py-10 space-y-8">
       <header className="space-y-2">
@@ -42,7 +44,7 @@ export default async function CategoriesPage() {
         </CardHeader>
         <CardContent>
           <TutorCategoriesForm
-            categories={categories}
+            categories={activeCategories}
             tutorsCategories={tutorProfile?.tutorCategories?.map(
               (cat: any) => cat?.categoryId as string,
             )}

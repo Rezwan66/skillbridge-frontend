@@ -1,6 +1,7 @@
 import TutorsPageLayout from '@/components/modules/tutors/TutorsPageLayout';
 import { categoryService } from '@/services/category.service';
 import { tutorService } from '@/services/tutor.service';
+import { Category } from '@/types/category.type';
 import { TutorSearchParams } from '@/types/tutor.type';
 
 type PageProps = {
@@ -31,12 +32,15 @@ export default async function TutorsPage({ searchParams }: PageProps) {
   ]);
 
   // console.log(categories);
+  const catData: Category[] = categories?.data?.data ?? [];
+
+  const activeCategories = catData.filter(cat => cat.isActive === true);
 
   return (
     <div>
       <TutorsPageLayout
         tutors={tutors?.data?.data ?? []}
-        categories={categories?.data.data ?? []}
+        categories={activeCategories}
       />
     </div>
   );

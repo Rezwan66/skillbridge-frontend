@@ -8,6 +8,9 @@ import CategoryCard from '../categories/CategoryCard';
 type Category = {
   id: string;
   name: string;
+  createdAt: Date;
+  updatedAt: Date;
+  isActive: boolean;
 };
 
 export default function CategoriesMarquee({
@@ -16,8 +19,9 @@ export default function CategoriesMarquee({
   categories: Category[];
 }) {
   // console.log(categories);
+  const activeCategories = categories.filter(cat => cat.isActive === true);
   return (
-    <section className="py-16 bg-muted/30 overflow-hidden">
+    <section className="py-16  overflow-hidden">
       <div className="container mb-8 text-center">
         <h2 className="text-3xl font-bold tracking-tight">
           Explore Subjects 📚
@@ -30,7 +34,7 @@ export default function CategoriesMarquee({
       {/* Marquee */}
       <div className="relative">
         <div className="flex gap-6 animate-marquee whitespace-nowrap">
-          {[...categories, ...categories].map((category, index) => (
+          {[...activeCategories, ...activeCategories].map((category, index) => (
             <Link
               key={`${category.id}-${index}`}
               href={`/tutors?categoryId=${encodeURIComponent(category.id)}`}
