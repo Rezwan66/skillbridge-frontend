@@ -27,7 +27,7 @@ export const reviewService = {
         return {
           data: null,
           error: {
-            message: 'Error: review not posted',
+            message: data.error ?? 'Error: review not posted',
           },
         };
       }

@@ -12,7 +12,7 @@ export default async function CategoriesPage() {
   const { data } = await categoryService.getAllCategories();
   //   console.log(data?.data);
   const categories = data?.data ?? [];
-  console.log(categories, tutorProfile);
+  // console.log(categories, tutorProfile);
   return (
     <section className="container mx-auto max-w-3xl py-10 space-y-8">
       <header className="space-y-2">

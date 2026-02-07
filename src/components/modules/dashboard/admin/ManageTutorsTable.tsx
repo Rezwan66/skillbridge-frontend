@@ -83,7 +83,7 @@ export default function ManageTutorsTable({
             <TableHead>Average Rating</TableHead>
 
             <TableHead>Is Featured</TableHead>
-            <TableHead>Make/Disable Featured</TableHead>
+            <TableHead>Feature/Un-Feature</TableHead>
           </TableRow>
         </TableHeader>
 

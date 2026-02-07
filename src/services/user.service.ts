@@ -69,7 +69,7 @@ export const userService = {
         return {
           data: null,
           error: {
-            message: 'Error: profile not updated',
+            message: data.error ?? 'Error: profile not updated',
           },
         };
       }

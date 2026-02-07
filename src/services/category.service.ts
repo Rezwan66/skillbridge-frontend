@@ -55,7 +55,7 @@ export const categoryService = {
         return {
           data: null,
           error: {
-            message: 'Error: category not created',
+            message: data.error ?? 'Error: category not created',
           },
         };
       }
@@ -72,14 +72,17 @@ export const categoryService = {
   }) {
     try {
       const cookieStore = await cookies();
-      const res = await fetch(`${API_URL}/api/categories/${payload.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Cookie: cookieStore.toString(),
+      const res = await fetch(
+        `${API_URL}/api/categories/${payload.id}/status`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Cookie: cookieStore.toString(),
+          },
+          body: JSON.stringify(payload),
         },
-        body: JSON.stringify(payload),
-      });
+      );
 
       const data = await res.json();
 
@@ -87,7 +90,7 @@ export const categoryService = {
         return {
           data: null,
           error: {
-            message: 'Error: category status not updated',
+            message: data.error ?? 'Error: category status not updated',
           },
         };
       }

@@ -7,7 +7,7 @@ export default async function ManageTutorsPage() {
   const { data } = await tutorService.getAllTutors({}, { cache: 'no-store' });
   const tutors: TutorProfile[] = data?.data ?? [];
 
-  console.log(tutors);
+  // console.log(tutors);
 
   //   const allUsers: UserInfo[] = data?.data ?? [];
   return (

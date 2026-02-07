@@ -94,7 +94,7 @@ export const tutorService = {
         return {
           data: null,
           error: {
-            message: 'Error: Profile not created/updated',
+            message: data.error ?? 'Error: Profile not created/updated',
           },
         };
       }
@@ -126,7 +126,7 @@ export const tutorService = {
         return {
           data: null,
           error: {
-            message: 'Error: Availability not created',
+            message: data.error ?? 'Error: Availability not created',
           },
         };
       }
@@ -161,7 +161,7 @@ export const tutorService = {
         return {
           data: null,
           error: {
-            message: 'Error: Availability not updated',
+            message: data.error ?? 'Error: Availability not updated',
           },
         };
       }
@@ -190,7 +190,7 @@ export const tutorService = {
         return {
           data: null,
           error: {
-            message: 'Error: Categories not added',
+            message: data.error ?? 'Error: Categories not added',
           },
         };
       }

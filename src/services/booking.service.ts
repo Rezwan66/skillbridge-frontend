@@ -72,7 +72,7 @@ export const bookingService = {
         return {
           data: null,
           error: {
-            message: 'Error: Booking not created',
+            message: data.error ?? 'Error: Booking not created',
           },
         };
       }
