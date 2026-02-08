@@ -50,6 +50,7 @@ export default function TutorFilters({
   // clear filters
   const clearFilters = () => {
     setPrice(50);
+    setSearchValue('');
     router.push('/tutors');
   };
 
