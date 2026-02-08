@@ -68,7 +68,7 @@ export function RegisterForm({
           toast.success('Please Login', { id: toastSlug });
 
           if (redirectPath) {
-            router.push(`/login?callbackUrl=${redirectPath}`);
+            router.push(`/login?redirectPath=${redirectPath}`);
           } else {
             router.push('/login');
           }

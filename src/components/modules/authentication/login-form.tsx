@@ -32,7 +32,7 @@ export function LoginForm({
   const router = useRouter();
   const searchParams = useSearchParams();
   // console.log({ searchParams });
-  const redirectPath = searchParams.get('redirectPath') || '/';
+  const redirectPath = searchParams.get('redirectPath') || '/dashboard';
   // console.log({ redirectPath });
 
   const form = useForm({
