@@ -4,6 +4,7 @@ import { LoginForm } from '@/components/modules/authentication/login-form';
 import Image from 'next/image';
 import Logo from '@/components/modules/shared/Logo';
 import { authClient } from '@/lib/auth-client';
+import { Suspense } from 'react';
 
 export default function LoginPage() {
   // const session = await authClient.getSession();
@@ -22,7 +23,11 @@ export default function LoginPage() {
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm />
+            <Suspense fallback={<div>Loading...</div>}>
+              {' '}
+              {/* ✅ Wrap in Suspense */}
+              <LoginForm />
+            </Suspense>
           </div>
         </div>
       </div>

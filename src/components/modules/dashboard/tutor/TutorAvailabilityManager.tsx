@@ -38,7 +38,7 @@ export default function TutorAvailabilityManager({
   const [date, setDate] = useState<Date>();
   const [start, setStart] = useState(() => {
     const now = new Date();
-    return now.toTimeString().slice(0, 5); // "HH:mm"
+    return now.toLocaleTimeString().slice(0, 5); // "HH:mm"
   });
   const [end, setEnd] = useState('');
   const [isPending, startTransition] = useTransition();
@@ -50,15 +50,39 @@ export default function TutorAvailabilityManager({
       toast.error('Select date and time');
       return;
     }
-
-    const startTime = new Date(date);
-    const endTime = new Date(date);
-
     const [sh, sm] = start.split(':');
     const [eh, em] = end.split(':');
 
-    startTime.setHours(+sh, +sm);
-    endTime.setHours(+eh, +em);
+    // const startTime = new Date(
+    //   Date.UTC(
+    //     date.getFullYear(),
+    //     date.getMonth(),
+    //     date.getDate(),
+    //     +sh,
+    //     +sm,
+    //     0,
+    //   ),
+    // );
+    // const endTime = new Date(
+    //   Date.UTC(
+    //     date.getFullYear(),
+    //     date.getMonth(),
+    //     date.getDate(),
+    //     +eh,
+    //     +em,
+    //     0,
+    //   ),
+    // );
+
+    // Create dates in LOCAL timezone (not UTC)
+    const startTime = new Date(date);
+    startTime.setHours(+sh, +sm, 0, 0);
+
+    const endTime = new Date(date);
+    endTime.setHours(+eh, +em, 0, 0);
+
+    // startTime.setHours(+sh, +sm);
+    // endTime.setHours(+eh, +em);
 
     // console.log({ startTime, endTime });
 
@@ -86,14 +110,42 @@ export default function TutorAvailabilityManager({
       return toast.error('Please set the correct date and times');
     }
     // console.log(id);
-    const startTime = new Date(date);
-    const endTime = new Date(date);
-
     const [sh, sm] = start.split(':');
     const [eh, em] = end.split(':');
+    // const startTime = new Date(date);
+    // const endTime = new Date(date);
 
-    startTime.setHours(+sh, +sm);
-    endTime.setHours(+eh, +em);
+    // Use UTC to avoid timezone issues
+    // const startTime = new Date(
+    //   Date.UTC(
+    //     date.getFullYear(),
+    //     date.getMonth(),
+    //     date.getDate(),
+    //     +sh,
+    //     +sm,
+    //     0,
+    //   ),
+    // );
+    // const endTime = new Date(
+    //   Date.UTC(
+    //     date.getFullYear(),
+    //     date.getMonth(),
+    //     date.getDate(),
+    //     +eh,
+    //     +em,
+    //     0,
+    //   ),
+    // );
+
+    // Create dates in LOCAL timezone (not UTC)
+    const startTime = new Date(date);
+    startTime.setHours(+sh, +sm, 0, 0);
+
+    const endTime = new Date(date);
+    endTime.setHours(+eh, +em, 0, 0);
+
+    // startTime.setHours(+sh, +sm);
+    // endTime.setHours(+eh, +em);
 
     startTransition(async () => {
       try {

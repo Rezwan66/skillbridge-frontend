@@ -7,7 +7,7 @@ import { Roles } from '@/constants';
 
 export default function DashboardProfile({ user }: { user: any }) {
   const initials =
-    user.name
+    user?.name
       ?.split(' ')
       .map((n: string) => n[0])
       .join('')
@@ -35,7 +35,7 @@ export default function DashboardProfile({ user }: { user: any }) {
         {/* image */}
         <div className="relative">
           <Avatar className="h-14 w-14 border-2 border-primary/10">
-            <AvatarImage src={user.image ?? ''} alt={'user profile image'} />
+            <AvatarImage src={user?.image ?? ''} alt={'user profile image'} />
             <AvatarFallback className="bg-primary/10 text-lg font-semibold">
               {initials}
             </AvatarFallback>
@@ -45,41 +45,41 @@ export default function DashboardProfile({ user }: { user: any }) {
         {/* name email */}
         <div className="flex-1 space-y-4">
           <div className="space-y-1">
-            <h3 className="font-semibold text-lg leading-none">{user.name}</h3>
-            <p className="text-sm text-muted-foreground">{user.email}</p>
+            <h3 className="font-semibold text-lg leading-none">{user?.name}</h3>
+            <p className="text-sm text-muted-foreground">{user?.email}</p>
           </div>
 
           {/* badges */}
           <div className="flex items-center gap-2">
-            {user.role && (
+            {user?.role && (
               <Badge
                 variant="secondary"
-                className={`text-xs text-black uppercase ${user.role === 'STUDENT' ? 'bg-green-400' : user.role === 'TUTOR' ? 'bg-blue-400' : 'bg-amber-400'}`}
+                className={`text-xs text-black uppercase ${user?.role === 'STUDENT' ? 'bg-green-400' : user?.role === 'TUTOR' ? 'bg-blue-400' : 'bg-amber-400'}`}
               >
-                {user.role.toLowerCase()}
+                {user?.role.toLowerCase()}
               </Badge>
             )}
 
             <Badge variant="outline" className="text-xs  uppercase">
-              {user.status}
+              {user?.status}
             </Badge>
           </div>
         </div>
         {/* edit */}
-        {user.role === Roles.admin ? null : (
+        {user?.role === Roles.admin ? null : (
           <div className="flex flex-col items-center">
             <UserPen className="text-xs" />
             <Link
               className="underline text-xs text-center"
               href={`/dashboard/${
-                user.role === Roles.student
+                user?.role === Roles.student
                   ? 'edit-profile'
-                  : user.role === Roles.tutor
+                  : user?.role === Roles.tutor
                     ? 'profile'
                     : ''
               }`}
             >
-              {user.role === Roles.tutor ? 'Tutor Profile' : 'Edit Profile'}
+              {user?.role === Roles.tutor ? 'Tutor Profile' : 'Edit Profile'}
             </Link>
           </div>
         )}

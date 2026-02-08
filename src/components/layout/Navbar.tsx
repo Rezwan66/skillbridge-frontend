@@ -33,6 +33,8 @@ import { UserInfo } from '@/types/user.type';
 import { UserMenu } from '../modules/shared/NavUserMenu';
 import Logo from '../modules/shared/Logo';
 
+export const dynamic = 'force-dynamic';
+
 interface MenuItem {
   title: string;
   url: string;

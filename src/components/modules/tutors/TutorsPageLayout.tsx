@@ -2,6 +2,7 @@ import { TutorProfile } from '@/types/tutor.type';
 import TutorFilters from './TutorFilters';
 import TutorsGrid from './TutorsGrid';
 import { Category } from '@/types/category.type';
+import { Suspense } from 'react';
 
 export default function TutorsPageLayout({
   tutors,
@@ -23,7 +24,9 @@ export default function TutorsPageLayout({
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-[260px_1fr]">
-        <TutorFilters categories={categories} />
+        <Suspense fallback={<div>Loading filters...</div>}>
+          <TutorFilters categories={categories} />
+        </Suspense>
         <TutorsGrid tutors={tutors} />
       </div>
     </div>

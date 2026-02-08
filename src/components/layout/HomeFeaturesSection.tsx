@@ -10,19 +10,20 @@ import {
   SwatchBook,
   LoaderIcon,
   Loader,
+  EuroIcon,
 } from 'lucide-react';
 
 import Features from '@/components/shadcn-studio/blocks/features-section-01/FeaturesComponent';
 
 const featuresList = [
   {
-    icon: SwatchBook,
+    icon: SwatchBookIcon,
     title: 'User-Friendly Interface',
     description:
       'Navigate effortlessly with our intuitive design, optimised for all devices.',
-    cardBorderColor: 'border-secondary/40 hover:border-secondary',
+    cardBorderColor: 'border-primary/40 hover:border-primary',
     avatarTextColor: 'text-primary',
-    avatarBgColor: 'bg-none',
+    avatarBgColor: 'bg-primary/10',
   },
   {
     icon: ShieldBanIcon,
@@ -30,7 +31,7 @@ const featuresList = [
     description:
       'Enjoy a safe browsing experience with role-based dashboards for students and tutors.',
     cardBorderColor:
-      'border-green-600 hover:border-green-600 dark:border-green-400/40 dark:hover:border-green-400',
+      'border-green-600/40 hover:border-green-600 dark:border-green-400/40 dark:hover:border-green-400',
     avatarTextColor: 'text-green-600 dark:text-green-400',
     avatarBgColor: 'bg-green-600/10 dark:bg-green-400/10',
   },
@@ -45,7 +46,7 @@ const featuresList = [
     avatarBgColor: 'bg-amber-600/10 dark:bg-amber-400/10',
   },
   {
-    icon: Star,
+    icon: StarIcon,
     title: 'Student Reviews and Ratings',
     description:
       'Make informed decisions with detailed tutor reviews from other students.',
@@ -54,7 +55,7 @@ const featuresList = [
     avatarBgColor: 'bg-destructive/10',
   },
   {
-    icon: Euro,
+    icon: EuroIcon,
     title: 'Payment In-Person',
     description:
       'Book sessions first - pay on site directly. No hassle of online payment.',
@@ -64,13 +65,13 @@ const featuresList = [
     avatarBgColor: 'bg-sky-600/10 dark:bg-sky-400/10',
   },
   {
-    icon: Loader,
+    icon: LoaderIcon,
     title: 'Track Progress',
     description:
       'Track your progress effortlessly with useful stats and upcoming sessions',
     cardBorderColor: 'border-primary/40 hover:border-primary',
     avatarTextColor: 'text-primary',
-    avatarBgColor: 'bg-none',
+    avatarBgColor: 'bg-primary/10',
   },
 ];
 

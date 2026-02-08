@@ -3,6 +3,7 @@ import { GalleryVerticalEnd } from 'lucide-react';
 import Image from 'next/image';
 import Logo from '@/components/modules/shared/Logo';
 import { RegisterForm } from '@/components/modules/authentication/register-form';
+import { Suspense } from 'react';
 
 export default function RegisterPage() {
   return (
@@ -27,7 +28,11 @@ export default function RegisterPage() {
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <RegisterForm />
+            <Suspense fallback={<div>Loading...</div>}>
+              {' '}
+              {/* ✅ Wrap in Suspense */}
+              <RegisterForm />
+            </Suspense>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ export default async function EditProfilePage() {
             </Badge>
           )}
 
-          <Badge variant="outline" className="text-xs text-black uppercase">
+          <Badge variant="outline" className="text-xs uppercase">
             {user.status}
           </Badge>
         </div>
@@ -36,7 +36,7 @@ export default async function EditProfilePage() {
       {/* Edit Profile SECTION */}
       <Card>
         <CardContent className="p-6 space-y-3">
-          <h2 className="text-lg font-semibold">Review</h2>
+          <h2 className="text-lg font-semibold">Profile</h2>
 
           <EditProfileForm user={user} />
         </CardContent>

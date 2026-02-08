@@ -15,6 +15,9 @@ import {
 } from '@/components/ui/sidebar';
 import { Roles } from '@/constants';
 import { userService } from '@/services/user.service';
+import { redirect } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
 
 export default async function DashboardLayout({
   admin,
@@ -26,13 +29,16 @@ export default async function DashboardLayout({
   tutor: React.ReactNode;
 }) {
   const { data } = await userService.getSession();
-
+  if (!data?.user) {
+    redirect('/login');
+  }
   const userInfo = { role: data?.user?.role };
   // console.log('layout', data.user);
+  const user = data?.user ?? {};
 
   return (
     <SidebarProvider>
-      <AppSidebar user={data?.user} />
+      <AppSidebar user={user} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />

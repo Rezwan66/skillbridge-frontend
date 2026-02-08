@@ -12,15 +12,15 @@ export default function SessionInfo({ session }: { session: any }) {
 
       <p className="text-sm">
         Logged in for{' '}
-        <span className="font-semibold">{getDuration(session.createdAt)}</span>
+        <span className="font-semibold">{getDuration(session?.createdAt)}</span>
       </p>
 
       <p className="text-sm text-muted-foreground">
-        Device: {session.userAgent?.split(')')[0]})
+        Device: {session?.userAgent?.split(')')[0]})
       </p>
 
       <p className="text-sm text-muted-foreground">
-        Logged out after {new Date(session.expiresAt).toLocaleString()}
+        Logged out after {new Date(session?.expiresAt).toLocaleString()}
       </p>
     </div>
   );

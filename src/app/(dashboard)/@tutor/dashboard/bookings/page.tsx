@@ -2,6 +2,8 @@ import MyBookingsTable from '@/components/modules/dashboard/student/MyBookingsTa
 import { bookingService } from '@/services/booking.service';
 import { userService } from '@/services/user.service';
 
+export const dynamic = 'force-dynamic';
+
 export default async function TutorBookingsPage({
   searchParams,
 }: {

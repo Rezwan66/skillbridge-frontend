@@ -14,16 +14,17 @@ export default function TutorPageCard({
 }) {
   const tutorImage = TUTOR_IMAGES[idx % TUTOR_IMAGES.length];
   return (
-    <Card className="hover:shadow-md cursor-pointer transition h-56 p-0">
-      <Link href={`/tutors/${tutor.id}`}>
-        <CardContent className="p-4 space-y-4">
-          <div className="flex items-center gap-3">
+    <Card className="hover:shadow-md transition cursor-pointer h-full">
+      <Link href={`/tutors/${tutor.id}`} className="h-full block">
+        <CardContent className="p-4 flex flex-col h-full space-y-4">
+          {/* Header */}
+          <div className="flex items-center gap-3 min-h-14">
             <Image
               src={tutorImage}
               alt="Tutor"
               width={48}
               height={48}
-              className="rounded-full"
+              className="rounded-full shrink-0"
             />
             <div>
               <p className="font-medium">{tutor?.name ?? 'Tutor'}</p>
@@ -33,10 +34,11 @@ export default function TutorPageCard({
             </div>
           </div>
 
-          <p className="text-sm line-clamp-2">{tutor.bio}</p>
+          {/* Bio */}
+          <p className="text-sm line-clamp-2 min-h-10">{tutor.bio}</p>
 
           {/* Subjects */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 min-h-8">
             {tutor.tutorCategories.map((tc: any) => (
               <span key={tc.id} className="rounded bg-muted px-2 py-1 text-xs">
                 {tc.category.name}
@@ -44,8 +46,8 @@ export default function TutorPageCard({
             ))}
           </div>
 
-          {/* Footer */}
-          <div className="flex items-center justify-between">
+          {/* Footer — ALWAYS at bottom */}
+          <div className="mt-auto flex items-center justify-between pt-2">
             <div className="flex items-center gap-1 text-yellow-500">
               <Star className="h-4 w-4 fill-yellow-500" />
               <span className="text-sm">{tutor.ratingAvg ?? 'New'}</span>
