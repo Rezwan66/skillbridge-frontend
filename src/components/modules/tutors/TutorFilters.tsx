@@ -70,8 +70,9 @@ export default function TutorFilters({
         )}
       </div>
       {/* searchbar */}
+      <p className="mb-2 text-sm font-medium">Search tutors</p>
       <Input
-        placeholder="Search tutors..."
+        placeholder="name, category, bio & press enter..."
         value={searchValue}
         onChange={e => setSearchValue(e.target.value)}
         onBlur={e => updateParam('search', e.target.value)}

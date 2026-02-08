@@ -40,7 +40,7 @@ export default function TutorPageCard({
           {/* Subjects */}
           <div className="flex flex-wrap gap-2 min-h-8">
             {tutor.tutorCategories.map((tc: any) => (
-              <span key={tc.id} className="rounded bg-muted px-2 py-1 text-xs">
+              <span key={tc.id} className="rounded bg-muted px-2 py-2 text-xs">
                 {tc.category.name}
               </span>
             ))}
