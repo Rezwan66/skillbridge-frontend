@@ -31,7 +31,7 @@ export default async function TutorsPage({ searchParams }: PageProps) {
     categoriesPromise,
   ]);
 
-  // console.log(categories);
+  console.log({ tutors, categories });
   const catData: Category[] = categories?.data?.data ?? [];
 
   const activeCategories = catData.filter(cat => cat.isActive === true);

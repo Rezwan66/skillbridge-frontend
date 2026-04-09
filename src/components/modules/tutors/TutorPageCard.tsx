@@ -12,7 +12,7 @@ export default function TutorPageCard({
   tutor: TutorProfile;
   idx: number;
 }) {
-  const tutorImage = TUTOR_IMAGES[idx % TUTOR_IMAGES.length];
+  const tutorImage = tutor.user?.image || 'https://github.com/shadcn.png';
   return (
     <Card className="hover:shadow-md transition cursor-pointer h-full">
       <Link href={`/tutors/${tutor.id}`} className="h-full block">

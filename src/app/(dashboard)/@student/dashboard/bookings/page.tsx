@@ -27,7 +27,7 @@ export default async function MyBookingsPage({
   ]);
   const bookings = bookingData?.data?.data ?? [];
   const user = userData?.data?.user ?? {};
-  // console.log(bookings);
+  console.log(bookings);
   // console.log(user);
   return (
     <section className="space-y-6">

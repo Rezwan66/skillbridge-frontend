@@ -13,7 +13,7 @@ export default async function CategoriesPage() {
   const { data } = await categoryService.getAllCategories();
   //   console.log(data?.data);
   const categories: Category[] = data?.data ?? [];
-  // console.log(categories, tutorProfile);
+  console.log({categories, tutorProfile});
   const activeCategories = categories.filter(cat => cat.isActive === true);
   return (
     <section className="container mx-auto max-w-3xl py-10 space-y-8">

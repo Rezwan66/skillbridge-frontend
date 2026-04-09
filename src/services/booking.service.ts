@@ -24,10 +24,13 @@ export const bookingService = {
         config.next = { revalidate: options.revalidate };
       }
       config.next = { ...config.next, tags: ['bookings'] };
+      
+      // FORCING NO-STORE TO BUST PERSISTENT DEVELOPMENT CACHE:
+      config.cache = 'no-store';
 
       const res = await fetch(url.toString(), config);
       const data = await res.json();
-
+      // console.log('from service-->',data);
       return { data, error: null };
     } catch (error) {
       return { data: null, error: { message: 'Something Went Wrong' } };
@@ -94,6 +97,28 @@ export const bookingService = {
         },
       });
       const data = await res.json();
+
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error: { message: 'Something Went Wrong!' } };
+    }
+  },
+
+  initiatePayment: async function (bookingId: string) {
+    try {
+      const cookieStore = await cookies();
+      const res = await fetch(`${API_URL}/api/bookings/initiate-payment/${bookingId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: cookieStore.toString(),
+        },
+      });
+
+      const data = await res.json();
+      if (!data.success) {
+        return { data: null, error: { message: data.message ?? 'Payment Initiation Failed' } };
+      }
 
       return { data, error: null };
     } catch (error) {

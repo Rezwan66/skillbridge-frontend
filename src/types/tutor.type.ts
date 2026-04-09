@@ -15,6 +15,9 @@ export interface TutorProfile {
       name: string;
     };
   }[];
+  user?: {
+    image?: string | null;
+  } | null;
 }
 
 export interface TutorSearchParams {

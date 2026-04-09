@@ -1,6 +1,6 @@
 'use client';
 
-import { updateBookingStatusAction } from '@/actions/booking.action';
+import { updateBookingStatusAction, initiatePaymentAction } from '@/actions/booking.action';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -58,6 +58,55 @@ export function BookingStatusCell({ booking, role }: Props) {
     });
   }
 
+  // const canPay = role === Roles.student && booking.paymentStatus === 'UNPAID' && booking.status !== BookingStatuses.cancelled;
+  const canPay=true;
+
+  // console.log(booking.paymentStatus); // undefined here
+
+  async function handlePayment() {
+    // --- APPROACH 1: TOAST SYSTEM (Commented out for you to try) ---
+    /*
+    toast.loading('Initiating Payment Checkout...');
+    const res = await initiatePaymentAction(booking.id);
+    toast.dismiss();
+    
+    if (res.success && res.url) {
+      toast.success('Redirecting to Stripe... 🚀');
+      window.location.href = res.url;
+    } else {
+      toast.error(res.error || 'Failed to initiate payment');
+    }
+    */
+
+    // --- APPROACH 2: MODAL SYSTEM (Currently Active) ---
+    Swal.fire({
+      title: 'Preparing Checkout',
+      text: 'Redirecting you to our secure Stripe gateway...',
+      icon: 'info',
+      allowOutsideClick: false,
+      didOpen: async () => {
+        Swal.showLoading();
+        const res = await initiatePaymentAction(booking.id);
+        
+        if (res.success && res.url) {
+          Swal.update({
+            icon: 'success',
+            title: 'Redirecting...',
+            text: 'Hold tight!',
+            showConfirmButton: false
+          });
+          window.location.href = res.url;
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Checkout Failed',
+            text: res.error || 'Failed to initiate payment',
+          });
+        }
+      }
+    });
+  }
+
   return (
     <div className="flex gap-2 items-center">
       <Badge
@@ -105,6 +154,23 @@ export function BookingStatusCell({ booking, role }: Props) {
           </TooltipTrigger>
           <TooltipContent side="right">
             <p>Complete Booking</p>
+          </TooltipContent>
+        </Tooltip>
+      )}
+
+      {canPay && (
+        <Tooltip>
+          <TooltipTrigger asChild>
+             <Button
+                variant='default'
+                onClick={handlePayment}
+                className="text-xs h-6 py-1 px-3 ml-2"
+             >
+                💳 Pay Now
+             </Button>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p>Pay securely via Stripe</p>
           </TooltipContent>
         </Tooltip>
       )}

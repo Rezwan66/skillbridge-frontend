@@ -4,7 +4,7 @@ import { adminService } from '@/services/admin.service';
 import { categoryService } from '@/services/category.service';
 import { tutorService } from '@/services/tutor.service';
 import { UserStatus } from '@/types/constants.type';
-import { updateTag } from 'next/cache';
+import { revalidateTag } from 'next/cache';
 
 export interface CreateTutorProfileType {
   name: string;
@@ -18,7 +18,7 @@ export async function updateUserStatusAction(
   payload: { status: UserStatus },
 ) {
   const res = await adminService.updateUserStatus(id, payload);
-  updateTag('allUsers');
+  revalidateTag('allUsers', 'max');
   return res;
 }
 
@@ -27,13 +27,13 @@ export async function updateTutorFeaturedStatusAction(
   payload: { isFeatured: boolean },
 ) {
   const res = await adminService.updateTutorFeaturedStatus(id, payload);
-  updateTag('tutors');
+  revalidateTag('tutors', 'max');
   return res;
 }
 
 export async function createCategoryAction(payload: { name: string }) {
   const res = await categoryService.createCategory(payload);
-  updateTag('categories');
+  revalidateTag('categories', 'max');
   return res;
 }
 
@@ -42,6 +42,6 @@ export async function updateCategoryStatusAction(payload: {
   isActive: boolean;
 }) {
   const res = await categoryService.updateCategoryStatus(payload);
-  updateTag('categories');
+  revalidateTag('categories', 'max');
   return res;
 }

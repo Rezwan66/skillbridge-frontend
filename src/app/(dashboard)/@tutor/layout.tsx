@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation';
 import { userService } from '@/services/user.service';
 import { Roles } from '@/constants';
 
-export default async function AdminLayout({
+export default async function TutorLayout({
   children,
 }: {
   children: React.ReactNode;

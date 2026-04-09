@@ -18,6 +18,8 @@ export async function proxy(request: NextRequest) {
     request.cookies.get('__Secure-better-auth.session_token') ??
     request.cookies.get('better-auth.session_token');
 
+  // console.log('from proxy-->', sessionToken);
+
   const isAuthenticated = !!sessionToken;
 
   if (AUTH_ROUTES.includes(pathname)) {

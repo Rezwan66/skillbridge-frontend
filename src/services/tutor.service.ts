@@ -33,6 +33,8 @@ export const tutorService = {
       const res = await fetch(url.toString(), config);
       const data = await res.json();
 
+      console.log('from service-->', data);
+
       return { data, error: null };
     } catch (error) {
       return { data: null, error: { message: 'Something Went Wrong' } };
@@ -89,6 +91,8 @@ export const tutorService = {
       });
 
       const data = await res.json();
+
+      console.log('from service-->', data);
 
       if (data.error) {
         return {

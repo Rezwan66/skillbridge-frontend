@@ -1,4 +1,5 @@
 'use client';
+import { useMemo } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -33,13 +34,15 @@ export default function TutorProfileForm({
 }) {
   const router = useRouter();
 
+  const defaultValues = useMemo(() => ({
+    name: tutorProfile?.name ?? '',
+    bio: tutorProfile?.bio ?? '',
+    hourlyRate: tutorProfile?.hourlyRate ? Number(tutorProfile.hourlyRate) : 0,
+    experienceYears: tutorProfile?.experienceYears ? Number(tutorProfile.experienceYears) : 0,
+  }), [tutorProfile]);
+
   const form = useForm({
-    defaultValues: {
-      name: tutorProfile?.name ?? '',
-      bio: tutorProfile?.bio ?? '',
-      hourlyRate: Number(tutorProfile?.hourlyRate),
-      experienceYears: Number(tutorProfile?.experienceYears),
-    },
+    defaultValues,
     validators: {
       onSubmit: tutorProfileSchema,
     },
