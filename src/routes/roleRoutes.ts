@@ -18,5 +18,6 @@ export const ROLE_ROUTES: Record<Role, string[]> = {
     '/dashboard/create-booking',
     '/dashboard/edit-profile',
     '/dashboard/bookings',
+    '/dashboard/payment',
   ],
 };

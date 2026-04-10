@@ -33,7 +33,7 @@ export const tutorService = {
       const res = await fetch(url.toString(), config);
       const data = await res.json();
 
-      console.log('from service-->', data);
+      // console.log('from service-->', data);
 
       return { data, error: null };
     } catch (error) {
@@ -92,7 +92,7 @@ export const tutorService = {
 
       const data = await res.json();
 
-      console.log('from service-->', data);
+      // console.log('from service-->', data);
 
       if (data.error) {
         return {

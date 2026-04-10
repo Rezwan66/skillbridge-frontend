@@ -29,7 +29,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated && pathname.startsWith('/dashboard')) {
     return NextResponse.redirect(
       new URL(`/login?redirectPath=${pathname}`, origin),
     );
@@ -55,6 +55,45 @@ export async function proxy(request: NextRequest) {
   // if (!canAccess) {
   //   return NextResponse.redirect(new URL('/dashboard', origin));
   // }
+
+  // To secure Role Routes dynamically:
+  if (isAuthenticated && pathname.startsWith('/dashboard')) {
+    try {
+      // Validate Token and Grab Role safely in Edge worker:
+      const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+      const cookieStr = `${sessionToken.name}=${sessionToken.value}`;
+      
+      const res = await fetch(`${apiUrl}/api/auth/get-session`, {
+        headers: { Cookie: cookieStr },
+      });
+      const data = await res.json();
+      
+      const userRole = data?.user?.role as Role;
+
+      if (!userRole) {
+        return NextResponse.redirect(new URL('/login', request.url));
+      }
+      
+      // The root dashboard page resolves for all active roles
+      if (pathname === '/dashboard') {
+        return NextResponse.next();
+      }
+
+      const allowedRoutes = ROLE_ROUTES[userRole] || [];
+      const canAccess = allowedRoutes.some(route => pathname.startsWith(route));
+
+      if (!canAccess) {
+        return NextResponse.redirect(new URL('/dashboard', origin));
+      }
+    } catch(err) {
+      console.error("Middleware Auth Fetch Error:", err);
+      // Failsafe bypass if local Edge environment fetch blocks (optional decision)
+      if (pathname !== '/dashboard') {
+        return NextResponse.redirect(new URL('/dashboard', origin));
+      }
+      return NextResponse.next(); 
+    }
+  }
 
   return NextResponse.next();
 }

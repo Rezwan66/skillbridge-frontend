@@ -57,7 +57,7 @@ export default function TutorProfileForm({
         if (res.error) {
           return toast.error(res.error.message, { id: toastId });
         }
-        console.log(value);
+        // console.log(value);
         toast.success(
           tutorProfile ? 'Profile updated ✨' : 'Profile created 🎉',
           { id: toastId },

@@ -34,7 +34,7 @@ export default function TutorCategoriesForm({
           toast.error(res.error.message);
           return;
         }
-        console.log(selected);
+        // console.log(selected);
         toast.success('Categories updated');
       } catch (error: any) {
         toast.error(error);
