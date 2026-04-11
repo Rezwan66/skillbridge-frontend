@@ -128,7 +128,7 @@ src/
 ### Prerequisites
 
 - Node.js v20+ (or Bun)
-- A running [skillbridge-backend](https://github.com/Rezwan66/skillbridge-backend) instance
+- A running [skillbridge-backend](https://github.com/Rezwan66/skillbridge-backend/tree/dev-a5) instance
 
 ### 1. Clone & Install
 
