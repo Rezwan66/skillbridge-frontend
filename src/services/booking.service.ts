@@ -71,11 +71,11 @@ export const bookingService = {
 
       const data = await res.json();
 
-      if (data.error) {
+      if (!data.success) {
         return {
           data: null,
           error: {
-            message: data.error ?? 'Error: Booking not created',
+            message: data.message ?? 'Error: Booking not created',
           },
         };
       }
@@ -97,6 +97,10 @@ export const bookingService = {
         },
       });
       const data = await res.json();
+
+      if (!data.success) {
+        return { data: null, error: { message: data.message ?? 'Update Failed' } };
+      }
 
       return { data, error: null };
     } catch (error) {

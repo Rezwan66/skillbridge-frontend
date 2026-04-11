@@ -58,8 +58,8 @@ export function BookingStatusCell({ booking, role }: Props) {
     });
   }
 
-  // const canPay = role === Roles.student && booking.paymentStatus === 'UNPAID' && booking.status !== BookingStatuses.cancelled;
-  const canPay=true;
+  const canPay = role === Roles.student && booking.paymentStatus === 'UNPAID' && booking.status !== BookingStatuses.cancelled;
+  // const canPay=true;
 
   // console.log(booking.paymentStatus); // undefined here
 
@@ -110,14 +110,15 @@ export function BookingStatusCell({ booking, role }: Props) {
   return (
     <div className="flex gap-2 items-center">
       <Badge
-        className={`${booking.status === 'COMPLETED' && 'bg-green-400'}`}
-        variant={
-          booking.status === 'COMPLETED'
-            ? 'secondary'
-            : booking.status === 'CANCELLED'
-              ? 'destructive'
-              : 'default'
-        }
+        // className={`${booking.status === 'COMPLETED' && 'bg-green-400'}`}
+        className={booking.status === 'COMPLETED' ? 'bg-green-500' : booking.status === 'CANCELLED' ? 'bg-red-500' : 'bg-yellow-400 text-black'}
+        // variant={
+        //   booking.status === 'COMPLETED'
+        //     ? 'secondary'
+        //     : booking.status === 'CANCELLED'
+        //       ? 'destructive'
+        //       : 'default'
+        // }
       >
         {booking.status}
       </Badge>
@@ -162,7 +163,7 @@ export function BookingStatusCell({ booking, role }: Props) {
         <Tooltip>
           <TooltipTrigger asChild>
              <Button
-                variant='default'
+                variant='outline'
                 onClick={handlePayment}
                 className="text-xs h-6 py-1 px-3 ml-2"
              >

@@ -27,8 +27,8 @@ export async function updateBookingStatusAction(bookingId: string) {
   const { data, error } = await bookingService.updateBookingStatus(bookingId);
   // console.log({ data, error });
 
-  if (data?.error) {
-    return { success: false, error: data.error };
+  if (error) {
+    return { success: false, error: error.message };
   }
 
   revalidatePath('/dashboard/bookings');
