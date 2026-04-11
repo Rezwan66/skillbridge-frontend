@@ -2,7 +2,7 @@
 
 **SkillBridge** is a full-stack tutoring platform where students can discover expert tutors, book lesson slots, and pay securely via Stripe. This repository contains the **Next.js frontend** powering the user interface.
 
-🔗 **Live Site:** [https://skillbridge-frontend.vercel.app](https://skillbridge-frontend.vercel.app)
+🔗 **Live Site:** [https://skillbridge-frontend-plum.vercel.app](https://skillbridge-frontend-plum.vercel.app)
 🔗 **Backend Repo:** [skillbridge-backend](https://github.com/Rezwan66/skillbridge-backend)
 
 ---
