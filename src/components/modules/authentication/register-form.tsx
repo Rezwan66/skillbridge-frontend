@@ -227,7 +227,7 @@ export function RegisterForm({
         </Button> */}
         <FieldDescription className="text-center">
           Already have an account?{' '}
-          <Link href="/login" className="underline underline-offset-4">
+          <Link href={`/login${redirectPath ? `?redirectPath=${redirectPath}` : ''}`} className="underline underline-offset-4">
             Login
           </Link>
         </FieldDescription>

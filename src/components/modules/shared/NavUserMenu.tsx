@@ -26,7 +26,7 @@ export function UserMenu({
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="focus:outline-none">
+      <DropdownMenuTrigger className="focus:outline-none cursor-pointer">
         <div className="flex items-center gap-2 hover:opacity-80 transition">
           <Avatar className="h-9 w-9">
             <AvatarImage
