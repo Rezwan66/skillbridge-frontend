@@ -92,7 +92,8 @@ export default function TutorFilters({
             <Button
               key={r}
               size="sm"
-              variant="outline"
+              variant={params.get('minRating') === r.toString() ? 'default' : 'outline'}
+              className="transition-all duration-300"
               onClick={() => updateParam('minRating', r.toString())}
             >
               {r}★ & up

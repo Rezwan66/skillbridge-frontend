@@ -24,9 +24,11 @@ export default function TutorsPageLayout({
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-[260px_1fr]">
-        <Suspense fallback={<div>Loading filters...</div>}>
-          <TutorFilters categories={categories} />
-        </Suspense>
+        <div className="md:sticky md:top-24 md:self-start z-10">
+          <Suspense fallback={<div>Loading filters...</div>}>
+            <TutorFilters categories={categories} />
+          </Suspense>
+        </div>
         <TutorsGrid tutors={tutors} />
       </div>
     </div>

@@ -70,7 +70,7 @@ export default function ProfileCard({ user }: { user: UserInfo }) {
     //     </Button>
     //   </CardFooter>
     // </Card>
-    <Card className="w-full border-0 shadow-none bg-transparent">
+    <Card className="w-full border-0 shadow-none bg-transparent mt-4">
       <CardHeader className="space-y-4">
         <div className="flex items-center gap-4">
           <div className="relative">

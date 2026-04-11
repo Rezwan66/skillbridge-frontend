@@ -64,15 +64,15 @@ export default function CreateBookingForm({ slot }: { slot: SlotType }) {
         ) : (
           <div>
             <p className="text-sm font-medium">
-              {new Date(slot.startTime).toLocaleDateString()}
+              {new Date(slot.startTime).toLocaleDateString('en-GB')}
             </p>
             <p className="text-xs text-muted-foreground">
-              {new Date(slot.startTime).toLocaleTimeString([], {
+              {new Date(slot.startTime).toLocaleTimeString('en-GB', {
                 hour: '2-digit',
                 minute: '2-digit',
               })}{' '}
               –
-              {new Date(slot.endTime).toLocaleTimeString([], {
+              {new Date(slot.endTime).toLocaleTimeString('en-GB', {
                 hour: '2-digit',
                 minute: '2-digit',
               })}

@@ -15,12 +15,12 @@ export function TutorCard({
 }) {
   const tutorImage = tutor.user?.image || 'https://github.com/shadcn.png';
   return (
-    <Card className="hover:shadow-lg transition ">
+    <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-border/50">
       <Link href={`/tutors/${tutor.id}`}>
         <CardContent className="p-0 space-y-4">
           {/* Image */}
           <div className="relative h-48 w-full rounded-t-md overflow-hidden">
-            <Image src={tutorImage} alt="Tutor" fill className="object-cover" />
+            <Image src={tutorImage} alt="Tutor" fill className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
           </div>
           {/* body */}
           <div className="p-4 space-y-4">
