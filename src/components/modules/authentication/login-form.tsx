@@ -69,12 +69,12 @@ export function LoginForm({
 
   const demoCredentials = {
     admin: {
-      email: 'super.man@example.com',
-      password: 'password1234',
+      email: 'admin1@skillbridge.com',
+      password: 'admin1234',
     },
     student: {
-      email: 'eren@ygr.com',
-      password: 'pass1234',
+      email: 'gojiro@gamil.com',
+      password: 'password1234',
     },
     tutor: {
       email: 'tutor.3@example.com',
