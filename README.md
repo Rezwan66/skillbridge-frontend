@@ -9,20 +9,20 @@
 
 ## 🛠️ Tech Stack
 
-| Layer            | Technology                                                    |
-| ---------------- | ------------------------------------------------------------- |
-| Framework        | Next.js 16 (App Router)                                      |
-| Language         | TypeScript                                                    |
-| Styling          | Tailwind CSS v4                                               |
-| UI Components    | shadcn/ui (Radix UI primitives)                               |
-| Forms            | TanStack React Form + Zod v4 validation                       |
-| Authentication   | Better Auth (client SDK with session cookies)                 |
-| State/Fetching   | Next.js Server Actions + Server Components                    |
-| Notifications    | Sonner (toasts) + SweetAlert2 (modals)                        |
-| Carousel         | Embla Carousel                                                |
-| Theming          | next-themes (light/dark mode)                                 |
-| Runtime          | Bun                                                           |
-| Deployment       | Vercel                                                        |
+| Layer          | Technology                                    |
+| -------------- | --------------------------------------------- |
+| Framework      | Next.js 16 (App Router)                       |
+| Language       | TypeScript                                    |
+| Styling        | Tailwind CSS v4                               |
+| UI Components  | shadcn/ui (Radix UI primitives)               |
+| Forms          | TanStack React Form + Zod v4 validation       |
+| Authentication | Better Auth (client SDK with session cookies) |
+| State/Fetching | Next.js Server Actions + Server Components    |
+| Notifications  | Sonner (toasts) + SweetAlert2 (modals)        |
+| Carousel       | Embla Carousel                                |
+| Theming        | next-themes (light/dark mode)                 |
+| Runtime        | Bun                                           |
+| Deployment     | Vercel                                        |
 
 ---
 
@@ -97,29 +97,29 @@ src/
 
 ### Public Routes
 
-| Route              | Description                                    |
-| ------------------ | ---------------------------------------------- |
-| `/`                | Homepage with featured tutors and testimonials |
-| `/tutors`          | Tutor directory with search and filters        |
-| `/tutors/:id`      | Individual tutor profile with availabilities   |
-| `/login`           | User login                                     |
-| `/register`        | User registration                              |
+| Route         | Description                                    |
+| ------------- | ---------------------------------------------- |
+| `/`           | Homepage with featured tutors and testimonials |
+| `/tutors`     | Tutor directory with search and filters        |
+| `/tutors/:id` | Individual tutor profile with availabilities   |
+| `/login`      | User login                                     |
+| `/register`   | User registration                              |
 
 ### Protected Dashboard Routes
 
-| Route                                    | Role    | Description                          |
-| ---------------------------------------- | ------- | ------------------------------------ |
-| `/dashboard`                             | All     | Role-specific overview               |
-| `/dashboard/edit-profile`                | All     | Edit user profile                    |
-| `/dashboard/bookings`                    | All     | View bookings (role-filtered)        |
-| `/dashboard/create-booking`              | Student | Book a tutor's availability slot     |
-| `/dashboard/payment/payment-success`     | Student | Post-payment confirmation page       |
-| `/dashboard/tutor-profile`               | Tutor   | Manage tutor profile                 |
-| `/dashboard/teaching-categories`         | Tutor   | Manage teaching categories           |
-| `/dashboard/availability`                | Tutor   | Create/delete availability slots     |
-| `/dashboard/manage-tutors`               | Admin   | Manage all tutors on the platform    |
-| `/dashboard/manage-users`                | Admin   | Manage all users (ban, role change)  |
-| `/dashboard/manage-categories`           | Admin   | CRUD for teaching categories         |
+| Route                                | Role    | Description                         |
+| ------------------------------------ | ------- | ----------------------------------- |
+| `/dashboard`                         | All     | Role-specific overview              |
+| `/dashboard/edit-profile`            | All     | Edit user profile                   |
+| `/dashboard/bookings`                | All     | View bookings (role-filtered)       |
+| `/dashboard/create-booking`          | Student | Book a tutor's availability slot    |
+| `/dashboard/payment/payment-success` | Student | Post-payment confirmation page      |
+| `/dashboard/tutor-profile`           | Tutor   | Manage tutor profile                |
+| `/dashboard/teaching-categories`     | Tutor   | Manage teaching categories          |
+| `/dashboard/availability`            | Tutor   | Create/delete availability slots    |
+| `/dashboard/manage-tutors`           | Admin   | Manage all tutors on the platform   |
+| `/dashboard/manage-users`            | Admin   | Manage all users (ban, role change) |
+| `/dashboard/manage-categories`       | Admin   | CRUD for teaching categories        |
 
 ---
 
@@ -143,18 +143,21 @@ npm install
 Create a `.env` file in the project root:
 
 ```env
-# Backend API
-API_URL=http://localhost:5000
+# BACKEND_URL=https://skillbridge-backend-phi.vercel.app
+BACKEND_URL=http://localhost:5000
+FRONTEND_URL=http://localhost:3000
+
+# NEXT_PUBLIC_BACKEND=https://skillbridge-backend-phi.vercel.app
+NEXT_PUBLIC_BACKEND=http://localhost:5000
+NEXT_PUBLIC_FRONTEND=http://localhost:3000
+
 # API_URL=https://skillbridge-backend-phi.vercel.app
-
-# Auth endpoint
-AUTH_URL=http://localhost:5000/api/auth
+API_URL=http://localhost:5000
 # AUTH_URL=https://skillbridge-backend-phi.vercel.app/api/auth
+AUTH_URL=http://localhost:5000/api/auth
 
-# Public URLs (accessible in client components)
 NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
 # NEXT_PUBLIC_BACKEND_URL=https://skillbridge-backend-phi.vercel.app
-NEXT_PUBLIC_FRONTEND=http://localhost:3000
 ```
 
 ### 3. Run the Development Server
@@ -169,12 +172,12 @@ The app will start at `http://localhost:3000`.
 
 ## 🧪 Useful Commands
 
-| Command           | Description                              |
-| ----------------- | ---------------------------------------- |
-| `npm run dev`     | Start development server with hot reload |
-| `npm run build`   | Build for production                     |
-| `npm run start`   | Start production server                  |
-| `npm run lint`    | Run ESLint                               |
+| Command         | Description                              |
+| --------------- | ---------------------------------------- |
+| `npm run dev`   | Start development server with hot reload |
+| `npm run build` | Build for production                     |
+| `npm run start` | Start production server                  |
+| `npm run lint`  | Run ESLint                               |
 
 ---
 
