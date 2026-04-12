@@ -80,7 +80,7 @@ export function UserMenu({
               fetchOptions: {
                 onSuccess: () => {
                   toast.success('Logged out successfully');
-                  window.location.href = '/';
+                  window.location.reload();
                 },
               },
             });
