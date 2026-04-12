@@ -8,6 +8,7 @@ import { Suspense } from 'react';
 export default function RegisterPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
+      {/* Right side image */}
       <div className="bg-muted relative hidden lg:block">
         <Image
           src="/images/auth.jpg"
@@ -16,6 +17,7 @@ export default function RegisterPage() {
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />
       </div>
+      {/* Left side form */}
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
           {/* <a href="#" className="flex items-center gap-2 font-medium">
