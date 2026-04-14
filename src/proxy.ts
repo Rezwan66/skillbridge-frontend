@@ -64,7 +64,10 @@ export async function proxy(request: NextRequest) {
       const cookieStr = `${sessionToken.name}=${sessionToken.value}`;
       
       const res = await fetch(`${apiUrl}/api/auth/get-session`, {
-        headers: { Cookie: cookieStr },
+        headers: { 
+          Cookie: cookieStr,
+          'x-forwarded-host': request.nextUrl.host
+        },
       });
       const data = await res.json();
       

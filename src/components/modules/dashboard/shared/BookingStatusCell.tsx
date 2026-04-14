@@ -59,26 +59,9 @@ export function BookingStatusCell({ booking, role }: Props) {
   }
 
   const canPay = role === Roles.student && booking.paymentStatus === 'UNPAID' && booking.status !== BookingStatuses.cancelled;
-  // const canPay=true;
-
-  // console.log(booking.paymentStatus); // undefined here
+  const hasPaid = role === Roles.student && booking.paymentStatus === 'PAID';
 
   async function handlePayment() {
-    // --- APPROACH 1: TOAST SYSTEM (Commented out for you to try) ---
-    /*
-    toast.loading('Initiating Payment Checkout...');
-    const res = await initiatePaymentAction(booking.id);
-    toast.dismiss();
-    
-    if (res.success && res.url) {
-      toast.success('Redirecting to Stripe... 🚀');
-      window.location.href = res.url;
-    } else {
-      toast.error(res.error || 'Failed to initiate payment');
-    }
-    */
-
-    // --- APPROACH 2: MODAL SYSTEM (Currently Active) ---
     Swal.fire({
       title: 'Preparing Checkout',
       text: 'Redirecting you to our secure Stripe gateway...',
@@ -108,73 +91,91 @@ export function BookingStatusCell({ booking, role }: Props) {
   }
 
   return (
-    <div className="flex gap-2 items-center">
-      <Badge
-        // className={`${booking.status === 'COMPLETED' && 'bg-green-400'}`}
-        className={booking.status === 'COMPLETED' ? 'bg-green-500' : booking.status === 'CANCELLED' ? 'bg-red-500' : 'bg-yellow-400 text-black'}
-        // variant={
-        //   booking.status === 'COMPLETED'
-        //     ? 'secondary'
-        //     : booking.status === 'CANCELLED'
-        //       ? 'destructive'
-        //       : 'default'
-        // }
-      >
-        {booking.status}
-      </Badge>
+    <div className="flex items-center gap-2">
+      {/* Fixed width Status Badge */}
+      <div className="w-[100px]">
+        <Badge
+          className={`w-full justify-center ${
+            booking.status === 'COMPLETED'
+              ? 'bg-green-500'
+              : booking.status === 'CANCELLED'
+                ? 'bg-red-500'
+                : 'bg-yellow-400 text-black'
+          }`}
+        >
+          {booking.status}
+        </Badge>
+      </div>
 
-      {canCancel && (
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              size="icon-xs"
-              variant="outline"
-              onClick={() => handleUpdate(BookingStatuses.cancelled)}
-              className="text-xs text-red-500 "
-            >
-              ❌
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right">
-            <p>Cancel Booking</p>
-          </TooltipContent>
-        </Tooltip>
-      )}
+      {/* Fixed width Middle Action Button (Cancel/Complete) */}
+      <div className="w-[30px] flex justify-center h-8 items-center">
+        {/* For student */}
+        {canCancel && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                size="icon-xs"
+                variant="outline"
+                onClick={() => handleUpdate(BookingStatuses.cancelled)}
+                className="text-xs text-red-500 h-7 w-7"
+              >
+                ❌
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>Cancel Booking</p>
+            </TooltipContent>
+          </Tooltip>
+        )}
+        {/* For tutor */}
+        {canComplete && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                size="icon-xs"
+                variant="ghost"
+                onClick={() => handleUpdate(BookingStatuses.completed)}
+                className="text-xs text-green-600 h-7 w-7"
+              >
+                ✅
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>Complete Booking</p>
+            </TooltipContent>
+          </Tooltip>
+        )}
+      </div>
 
-      {canComplete && (
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              size="icon-xs"
-              variant="ghost"
-              onClick={() => handleUpdate(BookingStatuses.completed)}
-              className="text-xs text-green-600 "
-            >
-              ✅
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right">
-            <p>Complete Booking</p>
-          </TooltipContent>
-        </Tooltip>
-      )}
+      {/* Fixed width Payment Status Widget */}
+      <div className="w-[100px]">
+        {canPay && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+               <Button
+                  variant='outline'
+                  onClick={handlePayment}
+                  className="text-xs h-7 py-1 px-3 w-full"
+               >
+                  💳 Pay Now
+               </Button>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>Pay securely via Stripe</p>
+            </TooltipContent>
+          </Tooltip>
+        )}
 
-      {canPay && (
-        <Tooltip>
-          <TooltipTrigger asChild>
-             <Button
-                variant='outline'
-                onClick={handlePayment}
-                className="text-xs h-6 py-1 px-3 ml-2"
-             >
-                💳 Pay Now
-             </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right">
-            <p>Pay securely via Stripe</p>
-          </TooltipContent>
-        </Tooltip>
-      )}
+        {hasPaid && (
+          <Button
+            variant="outline"
+            disabled
+            className="text-xs h-7 py-1 px-3 w-full border-green-500/30 text-green-600 bg-green-50/50 dark:bg-green-500/10 opacity-100 flex gap-1.5 items-center justify-center cursor-default"
+          >
+            ✅ Paid
+          </Button>
+        )}
+      </div>
     </div>
   );
 }

@@ -55,9 +55,8 @@ export function LoginForm({
           toast.success('User Logged In Successfully', { id: toastSlug });
           // console.log(data);
           form.reset();
-          //navigate to home or origin
-
-          router.replace(redirectPath);
+          // Hard navigate to ensure Next.js router caches flush and server reads new cookie
+          window.location.href = redirectPath;
         }
       } catch (error) {
         toast.error('Something went wrong, please try again.', {
