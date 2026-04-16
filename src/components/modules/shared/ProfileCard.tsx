@@ -1,10 +1,5 @@
 'use client';
-import {
-  Avatar,
-  AvatarBadge,
-  AvatarFallback,
-  AvatarImage,
-} from '@/components/ui/avatar';
+import { Avatar, AvatarBadge, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -45,7 +40,9 @@ export default function ProfileCard({ user }: { user: UserInfo }) {
       },
     });
   };
-  const avatarUrl = image || `https://api.dicebear.com/9.x/notionists/svg?seed=${user.id}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`;
+  const avatarUrl =
+    image ||
+    `https://api.dicebear.com/9.x/notionists/svg?seed=${user?.id}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`;
 
   return (
     // <Card className="mx-auto w-full max-w-62.5 bg-transparent">

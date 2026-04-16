@@ -19,13 +19,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ModeToggle } from './ModeToggle';
@@ -127,9 +121,7 @@ const Navbar = ({
             <Logo />
             <div className="flex items-center absolute left-1/2 -translate-x-1/2">
               <NavigationMenu>
-                <NavigationMenuList>
-                  {menu.map(item => renderMenuItem(item))}
-                </NavigationMenuList>
+                <NavigationMenuList>{menu.map(item => renderMenuItem(item))}</NavigationMenuList>
               </NavigationMenu>
             </div>
           </div>
@@ -138,6 +130,7 @@ const Navbar = ({
               <ModeToggle />
               <UserMenu
                 user={{
+                  id: user.id,
                   name: user.name,
                   email: user.email,
                   image: user.image,
@@ -193,11 +186,7 @@ const Navbar = ({
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
-                  <Accordion
-                    type="single"
-                    collapsible
-                    className="flex w-full flex-col gap-4"
-                  >
+                  <Accordion type="single" collapsible className="flex w-full flex-col gap-4">
                     {menu.map(item => renderMobileMenuItem(item))}
                   </Accordion>
 
@@ -205,6 +194,7 @@ const Navbar = ({
                     <div className="flex items-center gap-3 justify-between">
                       <UserMenu
                         user={{
+                          id: user.id,
                           name: user.name,
                           email: user.email,
                           image: user.image,

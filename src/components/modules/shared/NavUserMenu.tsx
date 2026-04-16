@@ -15,7 +15,7 @@ import { toast } from 'sonner';
 export function UserMenu({
   user,
 }: {
-  user: { name: string; email: string; image?: string | null };
+  user: { id: string; name: string; email: string; image?: string | null };
 }) {
   const initials = user.name
     .split(' ')
@@ -24,24 +24,21 @@ export function UserMenu({
     .toUpperCase()
     .slice(0, 2);
 
-  const avatarUrl = user?.image || `https://api.dicebear.com/9.x/notionists/svg?seed=${user.email}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`;
+  const avatarUrl =
+    user?.image ||
+    `https://api.dicebear.com/9.x/notionists/svg?seed=${user?.id}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`;
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none cursor-pointer">
         <div className="flex items-center gap-2 hover:opacity-80 transition">
           <Avatar className="h-9 w-9 bg-muted">
-            <AvatarImage
-              src={avatarUrl}
-              alt={user.name}
-            />
+            <AvatarImage src={avatarUrl} alt={user.name} />
             <AvatarFallback className="bg-primary/10 text-primary-foreground">
               {initials}
             </AvatarFallback>
           </Avatar>
-          <span className="hidden md:block text-sm font-medium">
-            {user.name}
-          </span>
+          <span className="hidden md:block text-sm font-medium">{user.name}</span>
         </div>
       </DropdownMenuTrigger>
 
