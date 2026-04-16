@@ -49,6 +49,7 @@
 - **Dark Mode** — Full light/dark theme toggle powered by `next-themes`.
 - **Responsive Design** — Fully responsive layout with a collapsible sidebar, mobile sheet navigation, and adaptive grid layouts.
 - **Micro-Animations** — Premium hover effects on tutor cards (lift + image zoom), smooth transitions, and interactive filter states.
+- **Dynamic Avatars** — Integrates the DiceBear API to automatically generate unique, deterministic, and highly colorful vector avatars for students and tutors who do not upload a custom profile picture.
 
 ---
 
