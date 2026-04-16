@@ -11,21 +11,23 @@ import { Star } from 'lucide-react';
 //   subject: string;
 // };
 
-export function ReviewCard({ rating, comment }: ReviewGet) {
+export function ReviewCard({ rating, comment, studentId }: ReviewGet) {
+  // Deterministic avatar URL using DiceBear (each studentId generates the EXACT same beautiful graphic)
+  const avatarUrl = `https://api.dicebear.com/9.x/notionists/svg?seed=${studentId}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`;
+
   return (
-    <Card className="h-full p-6">
-      <CardHeader className="">
-        <div className="flex items-center text-center mx-auto">
-          <Avatar className="h-14 w-14 border-2 border-primary/10">
-            <AvatarImage src={undefined} alt={'Testimonial user image'} />
-            <AvatarFallback className="bg-primary/10 text-lg font-semibold">
-              {'SK'}
+    <Card className="h-full p-6 flex flex-col">
+      <CardHeader className="pb-4">
+        <div className="flex flex-col items-center text-center mx-auto">
+          <Avatar className="h-16 w-16 border-2 border-primary/20 shadow-sm bg-muted">
+            <AvatarImage src={avatarUrl} alt="Student avatar" />
+            <AvatarFallback className="bg-primary/10 text-lg font-semibold text-primary">
+              ST
             </AvatarFallback>
           </Avatar>
-          {/* <div className="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-green-500 border-2 border-background" /> */}
         </div>
       </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+      <CardContent className="flex flex-col gap-4 flex-grow">
         {/* Stars */}
         <div className="flex justify-center gap-1 text-yellow-500">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -39,13 +41,15 @@ export function ReviewCard({ rating, comment }: ReviewGet) {
         </div>
 
         {/* Comment */}
-        <p className="text-center text-lg text-muted-foreground">“{comment}”</p>
+        <p className="text-center text-lg text-muted-foreground italic flex-grow">
+          "{comment}"
+        </p>
 
         {/* Footer */}
-        {/* <div className="mt-auto">
-          <p className="font-medium">{studentName}</p>
-          <p className="text-xs text-muted-foreground">Student • {subject}</p>
-        </div> */}
+        <div className="mt-4 text-center border-t pt-4">
+          <p className="font-semibold text-primary">Anonymous Student</p>
+          <p className="text-xs text-muted-foreground mt-1">Verified Booking</p>
+        </div>
       </CardContent>
     </Card>
   );

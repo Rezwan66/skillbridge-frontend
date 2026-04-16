@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { BookingStatuses, Roles } from '@/constants';
 import { userService } from '@/services/user.service';
 import ReviewForm from '@/components/modules/dashboard/student/ReviewForm';
+import LocalTime from '@/components/modules/shared/LocalTime';
 
 export default async function ViewBookingPage({
   params,
@@ -77,8 +78,12 @@ export default async function ViewBookingPage({
         <CardContent className="p-6 space-y-4">
           <h2 className="text-lg font-semibold">Session Time</h2>
           <p className="text-sm">
-            {new Date(booking.availability.startTime).toLocaleString()} –{' '}
-            {new Date(booking.availability.endTime).toLocaleTimeString()}
+            <LocalTime date={booking.availability.startTime} format="date" />{' at '}
+            <LocalTime 
+              date={booking.availability.startTime} 
+              endDate={booking.availability.endTime} 
+              format="timeRange" 
+            />
           </p>
         </CardContent>
       </Card>

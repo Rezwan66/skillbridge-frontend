@@ -14,6 +14,8 @@ import { Role } from '@/types/constants.type';
 import { BookingStatuses, Roles } from '@/constants';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import LocalTime from '../../shared/LocalTime';
+
 
 export default function MyBookingsTable({
   bookings,
@@ -69,19 +71,15 @@ export default function MyBookingsTable({
                 </TableCell>
 
                 <TableCell>
-                  {new Date(availability.startTime).toLocaleDateString()}
+                  <LocalTime date={availability.startTime} format="date" />
                 </TableCell>
 
                 <TableCell>
-                  {new Date(availability.startTime).toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })}
-                  {' – '}
-                  {new Date(availability.endTime).toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })}
+                  <LocalTime 
+                    date={availability.startTime} 
+                    endDate={availability.endTime} 
+                    format="timeRange" 
+                  />
                 </TableCell>
                 {/* status */}
                 <TableCell>

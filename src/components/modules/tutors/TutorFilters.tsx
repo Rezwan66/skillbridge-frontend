@@ -49,7 +49,7 @@ export default function TutorFilters({
   };
   // clear filters
   const clearFilters = () => {
-    setPrice(50);
+    setPrice(100);
     setSearchValue('');
     router.push('/tutors');
   };
