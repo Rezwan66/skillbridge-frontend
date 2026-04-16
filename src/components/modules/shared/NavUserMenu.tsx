@@ -24,16 +24,18 @@ export function UserMenu({
     .toUpperCase()
     .slice(0, 2);
 
+  const avatarUrl = user?.image || `https://api.dicebear.com/9.x/notionists/svg?seed=${user.email}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none cursor-pointer">
         <div className="flex items-center gap-2 hover:opacity-80 transition">
-          <Avatar className="h-9 w-9">
+          <Avatar className="h-9 w-9 bg-muted">
             <AvatarImage
-              src={user?.image ?? 'https://github.com/shadcn.png'}
+              src={avatarUrl}
               alt={user.name}
             />
-            <AvatarFallback className="bg-primary text-primary-foreground">
+            <AvatarFallback className="bg-primary/10 text-primary-foreground">
               {initials}
             </AvatarFallback>
           </Avatar>

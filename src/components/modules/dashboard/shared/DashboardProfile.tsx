@@ -34,9 +34,9 @@ export default function DashboardProfile({ user }: { user: any }) {
       <div className="flex items-center gap-4">
         {/* image */}
         <div className="relative">
-          <Avatar className="h-14 w-14 border-2 border-primary/10">
-            <AvatarImage src={user?.image ?? ''} alt={'user profile image'} />
-            <AvatarFallback className="bg-primary/10 text-lg font-semibold">
+          <Avatar className="h-14 w-14 border-2 border-primary/10 bg-muted">
+            <AvatarImage src={user?.image || `https://api.dicebear.com/9.x/notionists/svg?seed=${user?.email}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`} alt={'user profile image'} />
+            <AvatarFallback className="bg-primary/10 text-lg font-semibold text-primary">
               {initials}
             </AvatarFallback>
           </Avatar>

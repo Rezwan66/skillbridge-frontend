@@ -45,6 +45,8 @@ export default function ProfileCard({ user }: { user: UserInfo }) {
       },
     });
   };
+  const avatarUrl = image || `https://api.dicebear.com/9.x/notionists/svg?seed=${user.id}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`;
+
   return (
     // <Card className="mx-auto w-full max-w-62.5 bg-transparent">
     //   <CardHeader className="flex flex-row items-center gap-6 ">
@@ -74,9 +76,9 @@ export default function ProfileCard({ user }: { user: UserInfo }) {
       <CardHeader className="space-y-4">
         <div className="flex items-center gap-4">
           <div className="relative">
-            <Avatar className="h-14 w-14 border-2 border-primary/10">
-              <AvatarImage src={image ?? ''} alt={name} />
-              <AvatarFallback className="bg-primary/10 text-lg font-semibold">
+            <Avatar className="h-14 w-14 border-2 border-primary/10 bg-muted">
+              <AvatarImage src={avatarUrl} alt={name} />
+              <AvatarFallback className="bg-primary/10 text-lg font-semibold text-primary">
                 {initials}
               </AvatarFallback>
             </Avatar>

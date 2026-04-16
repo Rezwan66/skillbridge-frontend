@@ -13,7 +13,7 @@ export function TutorCard({
   tutor: TutorProfile;
   idx: number;
 }) {
-  const tutorImage = tutor.user?.image || 'https://github.com/shadcn.png';
+  const tutorImage = tutor.user?.image || `https://api.dicebear.com/9.x/notionists/svg?seed=${tutor.id}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`;
   return (
     <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-border/50">
       <Link href={`/tutors/${tutor.id}`}>

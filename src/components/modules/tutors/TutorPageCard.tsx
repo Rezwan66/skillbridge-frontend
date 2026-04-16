@@ -12,7 +12,7 @@ export default function TutorPageCard({
   tutor: TutorProfile;
   idx: number;
 }) {
-  const tutorImage = tutor.user?.image || 'https://github.com/shadcn.png';
+  const tutorImage = tutor.user?.image || `https://api.dicebear.com/9.x/notionists/svg?seed=${tutor.id}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`;
   return (
     <Card className="hover:shadow-md transition cursor-pointer h-full">
       <Link href={`/tutors/${tutor.id}`} className="h-full block">
