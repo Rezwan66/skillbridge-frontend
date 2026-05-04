@@ -30,10 +30,10 @@ interface Footer2Props {
 
 const Footer = ({
   logo = {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg',
-    alt: 'blocks for shadcn/ui',
-    title: 'Shadcnblocks.com',
-    url: 'https://www.shadcnblocks.com',
+    src: '/logo/mortarboard.png',
+    alt: 'Skillbridge Logo',
+    title: 'Skillbridge',
+    url: '/',
   },
   className,
   tagline = 'Connect with expert tutors',
@@ -41,73 +41,67 @@ const Footer = ({
     {
       title: 'Tutors',
       links: [
-        { text: 'Overview', url: '/tutors' },
-        { text: 'Pricing', url: '/tutors' },
-        { text: 'Rating', url: '/tutors' },
-        { text: 'Category', url: '/tutors' },
-        { text: 'Search', url: '/tutors' },
+        { text: 'Find Tutors', url: '/tutors' },
+        { text: 'By Subject', url: '/subjects' },
+        { text: 'Top Rated', url: '/tutors?sort=rating' },
+        { text: 'Pricing', url: '/tutors?sort=price' },
       ],
     },
     {
-      title: 'Subjects',
+      title: 'Platform',
       links: [
-        { text: 'About', url: '/' },
-        { text: 'Subjects', url: '/' },
-        { text: 'Categories', url: '/' },
-        { text: 'Learn', url: '/' },
+        { text: 'About Us', url: '/about' },
+        { text: 'How it Works', url: '/about#how-it-works' },
+        { text: 'Testimonials', url: '/#testimonials' },
+        { text: 'FAQ', url: '/#faq' },
       ],
     },
     {
-      title: 'About Us',
+      title: 'Support',
       links: [
-        { text: 'Services', url: '/' },
-        { text: 'Home', url: '/' },
-        { text: 'Features', url: '/' },
+        { text: 'Contact Us', url: '/contact' },
+        { text: 'Help Center', url: '/contact' },
+        { text: 'Become a Tutor', url: '/register' },
       ],
     },
     {
       title: 'Social',
       links: [
-        { text: 'Twitter', url: '#' },
-        { text: 'Instagram', url: '#' },
-        { text: 'LinkedIn', url: '#' },
+        { text: 'Twitter', url: 'https://twitter.com' },
+        { text: 'Instagram', url: 'https://instagram.com' },
+        { text: 'LinkedIn', url: 'https://linkedin.com' },
       ],
     },
   ],
-  copyright = '© 2026 Made with ❤️ using Next.Js & Shadcnblocks.com. All rights reserved.',
+  copyright = '© 2026 Made with ❤️ using Next.Js. All rights reserved.',
   bottomLinks = [
-    { text: 'Terms and Conditions', url: '#' },
-    { text: 'Privacy Policy', url: '#' },
+    { text: 'Terms and Conditions', url: '/terms' },
+    { text: 'Privacy Policy', url: '/privacy' },
   ],
 }: Footer2Props) => {
   return (
-    <section className={cn('py-32', className)}>
+    <section className={cn('py-16 bg-muted/30 border-t', className)}>
       <div className="container mx-auto px-4">
         <footer>
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
               <div className="flex items-center gap-2 lg:justify-start">
-                {/* <Logo url="https://shadcnblocks.com">
-                  <LogoImage
-                    src={logo.src}
-                    alt={logo.alt}
-                    title={logo.title}
-                    className="h-10 dark:invert"
-                  />
-                  <LogoText className="text-xl">{logo.title}</LogoText>
-                </Logo> */}
                 <Logo />
               </div>
-              <p className="mt-4 font-bold">{tagline}</p>
+              <p className="mt-4 font-medium text-muted-foreground">{tagline}</p>
+              <div className="mt-6 text-sm text-muted-foreground space-y-2">
+                <p>Email: support@skillbridge.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+              </div>
             </div>
             {menuItems.map((section, sectionIdx) => (
               <div key={sectionIdx}>
-                <h3 className="mb-4 font-bold">{section.title}</h3>
-                <ul className="space-y-4 text-muted-foreground">
+                <h3 className="mb-4 font-semibold text-foreground">{section.title}</h3>
+                <ul className="space-y-4 text-sm text-muted-foreground">
                   {section.links.map((link, linkIdx) => (
                     <li
                       key={linkIdx}
-                      className="font-medium hover:text-primary"
+                      className="font-medium hover:text-primary transition-colors"
                     >
                       <a href={link.url}>{link.text}</a>
                     </li>
@@ -116,11 +110,11 @@ const Footer = ({
               </div>
             ))}
           </div>
-          <div className="mt-24 flex flex-col justify-between gap-4 border-t pt-8 text-sm font-medium text-muted-foreground md:flex-row md:items-center">
+          <div className="mt-16 flex flex-col justify-between gap-4 border-t pt-8 text-sm font-medium text-muted-foreground md:flex-row md:items-center">
             <p>{copyright}</p>
-            <ul className="flex gap-4">
+            <ul className="flex gap-6">
               {bottomLinks.map((link, linkIdx) => (
-                <li key={linkIdx} className="underline hover:text-primary">
+                <li key={linkIdx} className="hover:text-primary transition-colors">
                   <a href={link.url}>{link.text}</a>
                 </li>
               ))}

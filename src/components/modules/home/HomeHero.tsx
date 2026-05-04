@@ -10,6 +10,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const HERO_IMAGES = [
   '/images/carousel-1.jpg',
@@ -22,7 +23,7 @@ const HERO_IMAGES = [
 export function HomeHero() {
   const autoplay = useRef(Autoplay({ delay: 4000, stopOnMouseEnter: true }));
   return (
-    <section className="relative h-[80vh] w-full overflow-hidden rounded-md">
+    <section className="relative h-[70vh] w-full overflow-hidden rounded-md">
       <Carousel
         opts={{ loop: true }}
         plugins={[autoplay.current]}
@@ -30,7 +31,7 @@ export function HomeHero() {
       >
         <CarouselContent>
           {HERO_IMAGES.map((src, index) => (
-            <CarouselItem key={index} className="relative h-[80vh]">
+            <CarouselItem key={index} className="relative h-[70vh]">
               <Image
                 src={src}
                 alt="Learning with expert tutors"
@@ -47,27 +48,43 @@ export function HomeHero() {
 
       {/* Text content */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white px-4">
-        <h1 className="text-4xl md:text-6xl font-bold max-w-3xl">
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-4xl md:text-6xl font-bold max-w-3xl"
+        >
           Learn from Expert Tutors, Anytime Anywhere
-        </h1>
+        </motion.h1>
 
-        <p className="mt-4 text-lg md:text-xl max-w-xl text-white/90">
+        <motion.p 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="mt-4 text-lg md:text-xl max-w-xl text-white/90"
+        >
           Book personalised sessions with verified tutors across multiple
           subjects.
-        </p>
+        </motion.p>
 
-        <div className="mt-8 flex gap-4">
-          <Button size="lg">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
+          className="mt-8 flex gap-4"
+        >
+          <Button size="lg" asChild>
             <Link href="/tutors">Find Tutors</Link>
           </Button>
           <Button
             size="lg"
             variant="outline"
             className="text-slate-950 dark:text-white"
+            asChild
           >
             <Link href="/register">Become a Tutor</Link>
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

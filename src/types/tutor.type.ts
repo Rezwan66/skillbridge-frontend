@@ -26,6 +26,9 @@ export interface TutorSearchParams {
   minRating?: string;
   maxPrice?: string;
   isFeatured?: string;
+  limit?: string;
+  page?: string;
+  sort?: string;
 }
 
 export interface TutorCreateProfile {
