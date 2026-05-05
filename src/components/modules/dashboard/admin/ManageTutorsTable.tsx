@@ -1,9 +1,6 @@
 'use client';
 
-import {
-  updateTutorFeaturedStatusAction,
-  updateUserStatusAction,
-} from '@/actions/admin.action';
+import { updateTutorFeaturedStatusAction, updateUserStatusAction } from '@/actions/admin.action';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -14,27 +11,17 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { UserStatuses } from '@/constants';
 import { UserStatus } from '@/types/constants.type';
 import { TutorProfile } from '@/types/tutor.type';
 
 import { toast } from 'sonner';
 
-export default function ManageTutorsTable({
-  tutors,
-}: {
-  tutors: TutorProfile[];
-}) {
+export default function ManageTutorsTable({ tutors }: { tutors: TutorProfile[] }) {
   if (!tutors.length) {
     return (
-      <p className="text-muted-foreground">
-        There are no tutor profiles in this platform yet!
-      </p>
+      <p className="text-muted-foreground">There are no tutor profiles in this platform yet!</p>
     );
   }
 
@@ -52,10 +39,7 @@ export default function ManageTutorsTable({
     }
   };
 
-  const makeUnFeatured = async (
-    id: string,
-    payload: { isFeatured: boolean },
-  ) => {
+  const makeUnFeatured = async (id: string, payload: { isFeatured: boolean }) => {
     const toastSlug = toast.loading('Making tutor un-featured...');
     // console.log({ id, payload });
     try {
@@ -94,9 +78,7 @@ export default function ManageTutorsTable({
 
             return (
               <TableRow key={tutor.id}>
-                <TableCell className="font-medium">
-                  {tutor?.name ?? 'Tutor'}
-                </TableCell>
+                <TableCell className="font-medium">{tutor?.name ?? 'Tutor'}</TableCell>
 
                 <TableCell className="flex flex-wrap gap-1 items-center">
                   {tutor?.tutorCategories?.map((ct: any) => (
@@ -106,9 +88,7 @@ export default function ManageTutorsTable({
                   )) ?? '—'}
                 </TableCell>
 
-                <TableCell className="text-center">
-                  {tutor?.experienceYears ?? 'NA'}
-                </TableCell>
+                <TableCell className="text-center">{tutor?.experienceYears ?? 'NA'}</TableCell>
 
                 <TableCell>
                   {tutor?.createdAt
@@ -122,13 +102,9 @@ export default function ManageTutorsTable({
                     : 'N/A'}
                 </TableCell>
 
-                <TableCell className="text-center">
-                  €{tutor?.hourlyRate ?? 'NA'}
-                </TableCell>
+                <TableCell className="text-center">€{tutor?.hourlyRate ?? 'NA'}</TableCell>
 
-                <TableCell className="text-center">
-                  {tutor?.totalReviews ?? 0}
-                </TableCell>
+                <TableCell className="text-center">{tutor?.totalReviews ?? 0}</TableCell>
 
                 <TableCell className="text-center">
                   {tutor?.ratingAvg ? Number(tutor.ratingAvg).toFixed(2) : 'NA'}
@@ -141,10 +117,7 @@ export default function ManageTutorsTable({
                 </TableCell> */}
 
                 <TableCell className="flex flex-row gap-2 justify-center">
-                  <p className="flex-1 text-center">
-                    {' '}
-                    {tutor?.isFeatured ? 'Yes' : 'No'}
-                  </p>
+                  <p className="flex-1 text-center"> {tutor?.isFeatured ? 'Yes' : 'No'}</p>
                 </TableCell>
 
                 <TableCell className="text-center">
@@ -154,7 +127,7 @@ export default function ManageTutorsTable({
                       <TooltipTrigger asChild>
                         <Button
                           size="icon-xs"
-                          variant="outline"
+                          variant="secondary"
                           disabled={Boolean(tutor?.isFeatured)}
                           onClick={() =>
                             makeFeatured(tutor?.id, {
@@ -175,7 +148,7 @@ export default function ManageTutorsTable({
                       <TooltipTrigger asChild>
                         <Button
                           size="icon-xs"
-                          variant="outline"
+                          variant="secondary"
                           disabled={!Boolean(tutor?.isFeatured)}
                           onClick={() =>
                             makeUnFeatured(tutor?.id, {

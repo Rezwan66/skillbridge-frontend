@@ -11,11 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Category } from '@/types/category.type';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -24,10 +20,7 @@ import { toast } from 'sonner';
 export default function EditCategoryStatusButton({ cat }: { cat: Category }) {
   const [open, setOpen] = useState(false);
   //   const router = useRouter();
-  const handleUpdateCategoryStatus = async (payload: {
-    id: string;
-    isActive: boolean;
-  }) => {
+  const handleUpdateCategoryStatus = async (payload: { id: string; isActive: boolean }) => {
     const toastSlug = toast.loading(
       `Making category ${payload.isActive ? 'active' : 'deactivated'}...`,
     );
@@ -37,10 +30,9 @@ export default function EditCategoryStatusButton({ cat }: { cat: Category }) {
       if (res.error) {
         return toast.error(res.error.message, { id: toastSlug });
       }
-      toast.success(
-        `Made category ${payload.isActive ? 'active ✅' : 'deactivated ❌'}`,
-        { id: toastSlug },
-      );
+      toast.success(`Made category ${payload.isActive ? 'active ✅' : 'deactivated ❌'}`, {
+        id: toastSlug,
+      });
       //   router.refresh()
       setOpen(false); // close dialog on success
     } catch (error) {
@@ -55,7 +47,7 @@ export default function EditCategoryStatusButton({ cat }: { cat: Category }) {
           {/* make active */}
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button size="icon-xs" variant="outline" className="text-xs">
+              <Button size="icon-xs" variant="secondary" className="text-xs">
                 {cat.isActive ? '✅' : '❌'}
               </Button>
             </TooltipTrigger>
@@ -90,9 +82,7 @@ export default function EditCategoryStatusButton({ cat }: { cat: Category }) {
             disabled={cat.isActive}
             variant="default"
             className="bg-green-400 flex-1"
-            onClick={() =>
-              handleUpdateCategoryStatus({ id: cat.id, isActive: true })
-            }
+            onClick={() => handleUpdateCategoryStatus({ id: cat.id, isActive: true })}
           >
             Activate
           </Button>
@@ -101,9 +91,7 @@ export default function EditCategoryStatusButton({ cat }: { cat: Category }) {
             disabled={!cat.isActive}
             variant="destructive"
             className="flex-1"
-            onClick={() =>
-              handleUpdateCategoryStatus({ id: cat.id, isActive: false })
-            }
+            onClick={() => handleUpdateCategoryStatus({ id: cat.id, isActive: false })}
           >
             Deactivate
           </Button>

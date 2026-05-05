@@ -3,11 +3,7 @@
 import { updateBookingStatusAction, initiatePaymentAction } from '@/actions/booking.action';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { BookingStatuses, Roles } from '@/constants';
 import { BookingStatus, Role } from '@/types/constants.type';
 
@@ -20,11 +16,9 @@ type Props = {
 };
 
 export function BookingStatusCell({ booking, role }: Props) {
-  const canCancel =
-    role === Roles.student && booking.status === BookingStatuses.confirmed;
+  const canCancel = role === Roles.student && booking.status === BookingStatuses.confirmed;
 
-  const canComplete =
-    role === Roles.tutor && booking.status === BookingStatuses.confirmed;
+  const canComplete = role === Roles.tutor && booking.status === BookingStatuses.confirmed;
 
   // console.log(canCancel);
 
@@ -58,7 +52,10 @@ export function BookingStatusCell({ booking, role }: Props) {
     });
   }
 
-  const canPay = role === Roles.student && booking.paymentStatus === 'UNPAID' && booking.status !== BookingStatuses.cancelled;
+  const canPay =
+    role === Roles.student &&
+    booking.paymentStatus === 'UNPAID' &&
+    booking.status !== BookingStatuses.cancelled;
   const hasPaid = role === Roles.student && booking.paymentStatus === 'PAID';
 
   async function handlePayment() {
@@ -70,13 +67,13 @@ export function BookingStatusCell({ booking, role }: Props) {
       didOpen: async () => {
         Swal.showLoading();
         const res = await initiatePaymentAction(booking.id);
-        
+
         if (res.success && res.url) {
           Swal.update({
             icon: 'success',
             title: 'Redirecting...',
             text: 'Hold tight!',
-            showConfirmButton: false
+            showConfirmButton: false,
           });
           window.location.href = res.url;
         } else {
@@ -86,7 +83,7 @@ export function BookingStatusCell({ booking, role }: Props) {
             text: res.error || 'Failed to initiate payment',
           });
         }
-      }
+      },
     });
   }
 
@@ -115,7 +112,7 @@ export function BookingStatusCell({ booking, role }: Props) {
             <TooltipTrigger asChild>
               <Button
                 size="icon-xs"
-                variant="outline"
+                variant="secondary"
                 onClick={() => handleUpdate(BookingStatuses.cancelled)}
                 className="text-xs text-red-500 h-7 w-7"
               >
@@ -133,7 +130,7 @@ export function BookingStatusCell({ booking, role }: Props) {
             <TooltipTrigger asChild>
               <Button
                 size="icon-xs"
-                variant="ghost"
+                variant="secondary"
                 onClick={() => handleUpdate(BookingStatuses.completed)}
                 className="text-xs text-green-600 h-7 w-7"
               >
@@ -152,13 +149,13 @@ export function BookingStatusCell({ booking, role }: Props) {
         {canPay && (
           <Tooltip>
             <TooltipTrigger asChild>
-               <Button
-                  variant='outline'
-                  onClick={handlePayment}
-                  className="text-xs h-7 py-1 px-3 w-full"
-               >
-                  💳 Pay Now
-               </Button>
+              <Button
+                variant="outline"
+                onClick={handlePayment}
+                className="text-xs h-7 py-1 px-3 w-full"
+              >
+                💳 Pay Now
+              </Button>
             </TooltipTrigger>
             <TooltipContent side="right">
               <p>Pay securely via Stripe</p>
