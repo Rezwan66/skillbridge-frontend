@@ -16,6 +16,7 @@ import {
 import { Roles } from '@/constants';
 import { userService } from '@/services/user.service';
 import { redirect } from 'next/navigation';
+import { FloatingChat } from '@/components/layout/FloatingChat';
 
 export const dynamic = 'force-dynamic';
 
@@ -69,6 +70,7 @@ export default async function DashboardLayout({
               : student}
         </div>
       </SidebarInset>
+      <FloatingChat />
     </SidebarProvider>
   );
 }

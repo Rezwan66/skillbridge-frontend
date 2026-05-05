@@ -13,7 +13,8 @@ export default function Calendar01() {
       defaultMonth={date}
       selected={date}
       onSelect={setDate}
-      className="rounded-lg border shadow-sm"
+      className="rounded-lg border shadow-sm !py-2 !px-4"
+      style={{ '--cell-size': '26px', 'font-size': '10px' } as React.CSSProperties}
     />
   );
 }
