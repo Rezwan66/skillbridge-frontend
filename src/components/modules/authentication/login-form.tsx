@@ -181,7 +181,7 @@ export function LoginForm({
           <Button
             variant="outline"
             size="sm"
-            className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
+            className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors dark:hover:text-primary"
             onClick={() => {
               form.setFieldValue('email', demoCredentials.student.email);
               form.setFieldValue('password', demoCredentials.student.password);
@@ -193,7 +193,7 @@ export function LoginForm({
           <Button
             variant="outline"
             size="sm"
-            className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
+            className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors dark:hover:text-primary"
             onClick={() => {
               form.setFieldValue('email', demoCredentials.tutor.email);
               form.setFieldValue('password', demoCredentials.tutor.password);
@@ -205,7 +205,7 @@ export function LoginForm({
           <Button
             variant="outline"
             size="sm"
-            className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
+            className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors dark:hover:text-primary"
             onClick={() => {
               form.setFieldValue('email', demoCredentials.admin.email);
               form.setFieldValue('password', demoCredentials.admin.password);

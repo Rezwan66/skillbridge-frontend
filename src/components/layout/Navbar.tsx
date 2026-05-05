@@ -89,16 +89,12 @@ const Navbar = ({
   className,
   user,
 }: Navbar1Props) => {
-  if (user) {
-    menu.push({
-      title: 'Dashboard',
-      url: '/dashboard',
-    });
-    menu.push({
-      title: 'Profile',
-      url: '/dashboard/profile',
-    });
-  }
+  const navMenu = user ? [
+    ...menu,
+    { title: 'Dashboard', url: '/dashboard' },
+    { title: 'Profile', url: '/dashboard/profile' }
+  ] : menu;
+
   return (
     <header className={cn('sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md py-4 transition-all duration-300', className)}>
       <div className="container mx-auto px-4">
@@ -108,7 +104,7 @@ const Navbar = ({
             <Logo />
             <div className="flex items-center absolute left-1/2 -translate-x-1/2">
               <NavigationMenu>
-                <NavigationMenuList>{menu.map(item => renderMenuItem(item))}</NavigationMenuList>
+                <NavigationMenuList>{navMenu.map(item => renderMenuItem(item))}</NavigationMenuList>
               </NavigationMenu>
             </div>
           </div>
@@ -155,7 +151,7 @@ const Navbar = ({
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4 mt-6">
                   <Accordion type="single" collapsible className="flex w-full flex-col gap-4">
-                    {menu.map(item => renderMobileMenuItem(item))}
+                    {navMenu.map(item => renderMobileMenuItem(item))}
                   </Accordion>
 
                   {user ? (
@@ -194,7 +190,7 @@ const renderMenuItem = (item: MenuItem) => {
   if (item.items) {
     return (
       <NavigationMenuItem key={item.title}>
-        <NavigationMenuTrigger className="bg-transparent hover:bg-muted/50">{item.title}</NavigationMenuTrigger>
+        <NavigationMenuTrigger className="bg-transparent hover:bg-muted/50 hover:text-primary">{item.title}</NavigationMenuTrigger>
         <NavigationMenuContent>
           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
             {item.items.map((subItem) => (
@@ -202,7 +198,7 @@ const renderMenuItem = (item: MenuItem) => {
                 <NavigationMenuLink asChild>
                   <Link
                     href={subItem.url}
-                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-accent-foreground focus:bg-muted focus:text-accent-foreground"
+                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-primary focus:bg-muted focus:text-primary"
                   >
                     <div className="text-sm font-medium leading-none">{subItem.title}</div>
                     <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
@@ -222,7 +218,7 @@ const renderMenuItem = (item: MenuItem) => {
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
         asChild
-        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-muted/50 hover:text-accent-foreground"
+        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-muted/50 hover:text-primary"
       >
         <Link href={item.url}>{item.title}</Link>
       </NavigationMenuLink>

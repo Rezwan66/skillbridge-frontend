@@ -15,8 +15,13 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-primary/5 dark:bg-primary/10 rounded-3xl mx-4 lg:mx-8" />
+    <section className="py-24 relative overflow-hidden">
+      <div 
+        className="absolute inset-0 rounded-3xl mx-4 lg:mx-8 bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{ backgroundImage: 'url(/images/newsletter-bg.jpg)' }}
+      >
+        <div className="absolute inset-0 bg-white/85 dark:bg-black/85 backdrop-blur-[2px] rounded-3xl" />
+      </div>
       
       <div className="container relative mx-auto px-4 z-10">
         <div className="max-w-2xl mx-auto text-center py-16">
